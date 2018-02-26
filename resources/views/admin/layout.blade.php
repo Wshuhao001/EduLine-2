@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+    <link rel="icon" href="/favicon.ico">
 
     <title>Адмін панель</title>
 
@@ -35,16 +35,31 @@
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
+
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link active" href="{{route('users.index')}}">
                   Користувачі <span class="sr-only">(current)</span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('all_courses.index')}}">
+                  <span data-feather="admin-courses"></span>
+                  Всі курси
                 </a>
               </li>
               
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('courses.index')}}">
                   <span data-feather="admin-courses"></span>
-                  Курси
+                  Курси на модерації
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('categories.index')}}">
+                  <span data-feather="admin-courses"></span>
+                  Категорії
                 </a>
               </li>
 

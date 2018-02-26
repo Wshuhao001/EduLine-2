@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email'
     ];
 
     /**
@@ -24,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+         'remember_token'
     ];
 
     public function courses()
@@ -52,6 +52,15 @@ class User extends Authenticatable
        $this->password = bcrypt($fields['password']);
        $this->save();
     }
+
+//    public function generatePassword($password)
+//    {
+//        if ($password != null)
+//        {
+//            $this->password = bcrypt($password);
+//            $this->save();
+//        }
+//    }
 
     public function remove()
     {

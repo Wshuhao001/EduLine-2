@@ -47,6 +47,12 @@ select{
 	color: white;
 	margin-right: 30px;
 }
+.card{
+	cursor: pointer;
+}
+.related-course-img{
+	cursor: pointer;
+}
 
 
 .jumbotron-billboard .img {
@@ -538,5 +544,13 @@ footer{
 	box-shadow: 0px 0px 31px -12px rgba(143,143,143,1);
 }
 .user-btn{
-	margin-left: 20vw;
+	margin-left: 15vw;
+}
+
+.no-btn{
+	background-color: transparent;
+	border: none;
+	padding: 0;
+	margin-left: 5px;
+	cursor: pointer;
 }

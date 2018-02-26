@@ -17,10 +17,14 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email');
-            $table->string('password');
+            $table->string('password')->default('test');
             $table->integer('status')->default(0);
             $table->integer('is_admin')->default(0);
             $table->integer('money')->default(0);
+            $table->text('short_description')->nullable();
+            $table->text('description')->nullable();
+            $table->integer('courses_count')->default(0);
+            $table->integer('students')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

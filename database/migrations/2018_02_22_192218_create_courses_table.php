@@ -17,13 +17,17 @@ class CreateCoursesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('description');
+            $table->text('short_description');
             $table->string('image')->nullable();
             $table->integer('category_id');
             $table->integer('user_id');
+            $table->integer('students')->default(0);
             $table->json('structure')->nullable();
             $table->string('demo')->nullable();
             $table->text('skills')->nullable();
             $table->text('requirements')->nullable();
+            $table->integer('status')->default(0);
+            $table->integer('price')->default(0);
             $table->timestamps();
         });
     }

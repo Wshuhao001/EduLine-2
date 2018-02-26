@@ -3,20 +3,22 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Category;
 
 class Course extends Model
 {
-    protected $fillable = ['title', 'description', 'skills','requirements'];
+    protected $fillable = ['title','short_description', 'description', 'category_id', 'skills','requirements','price'];
 
     public function category()
     {
-        return $this->hasOne(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function author()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
 
@@ -30,7 +32,7 @@ class Course extends Model
     {
         $course = new static;
         $course->fill($fields);
-        $course->user_id = 1;
+        $course->user_id = Auth::user()->id;
         $course->save();
 
         return $course;
@@ -53,9 +55,9 @@ class Course extends Model
     {
         if ($image == null) {return; }
 
-        Storage::delete('uploads/' . $this->image);
+        //Storage::delete('uploads/' . $this->image);
         $filename = str_random(10) . '.' . $image->extension();
-        $image->saveAs('uploads',$filename);
+        $image->storeAs('uploads',$filename);
         $this->image = $filename;
         $this->save();
     }
@@ -83,7 +85,7 @@ class Course extends Model
     {
         if ($lesson == null) {return; }
         $filename = str_random(10) . '.' . $lesson->extension();
-        $lesson->saveAs('videos',$filename);
+        $lesson->storeAs('videos',$filename);
         $videos = json_decode($this->structure);
         array_push($videos,$filename);
         $videos = json_encode();
@@ -135,7 +137,7 @@ class Course extends Model
 
         if ($lesson == null) {return; }
         $filename = str_random(10) . '.' . $lesson->extension();
-        $lesson->saveAs('videos',$filename);
+        $lesson->storeAs('videos',$filename);
 
         $this->demo = $filename;
         $this->save();
@@ -150,6 +152,14 @@ class Course extends Model
         }
 
         return '/videos/' . $this->demo;
+    }
+
+
+    public function getCategoryTitle()
+    {
+        if ($this->category != null) {
+            return $this->category->title;
+        }
     }
 
 
