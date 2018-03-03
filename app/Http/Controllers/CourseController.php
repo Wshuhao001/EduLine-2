@@ -9,7 +9,7 @@ class CourseController extends Controller
 {
     public function index($id)
     {
-        $course = Course::where('id',$id)->firstOrFail();
+        $course = Course::where('id',$id)->where('status',1)->firstOrFail();
         $relates = Course::where('category_id', $course->category_id)
             ->where('id','!=',$course->id)
             ->take(2)

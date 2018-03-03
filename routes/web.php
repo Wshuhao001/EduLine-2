@@ -19,10 +19,16 @@ Route::get('/teacher/{id}/courses', 'AllCoursesController@teacherShow')->name('t
 
 
 
+Route::get('/course/{id}/opened', 'MyCourseController@index');
+
+
+
 Route::group(['middleware' => 'teacher'],function (){
     Route::get('/teacher/courses/manage', 'TeacherController@index')->name('teacher.index');
     Route::get('/teacher/course/create', 'TeacherController@create')->name('teacher.create');
     Route::post('/teacher/course/create', 'TeacherController@store')->name('teacher.store');
+    Route::get('/teacher/course/{id}/addLessons', 'TeacherController@edit')->name('teacher.edit');
+    Route::put('/teacher/course/{id}/addLessons', 'TeacherController@update')->name('teacher.update');
 
 });
 

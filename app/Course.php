@@ -66,7 +66,7 @@ class Course extends Model
     {
         if ($this->image == null)
         {
-            return '/img/no-image.png';
+            return '/img/no-course-img.jpg';
         }
 
         return '/uploads/' . $this->image;
@@ -86,9 +86,13 @@ class Course extends Model
         if ($lesson == null) {return; }
         $filename = str_random(10) . '.' . $lesson->extension();
         $lesson->storeAs('videos',$filename);
+
         $videos = json_decode($this->structure);
+        if ($videos == null) {
+            $videos = array();
+        }
         array_push($videos,$filename);
-        $videos = json_encode();
+        $videos = json_encode($videos);
         $this->structure = $videos;
         $this->save();
     }
@@ -120,7 +124,7 @@ class Course extends Model
 
 
 
-    public function getLesson($id)
+    public function getLesson()
     {
         if ($this->structure == null)
         {
@@ -129,7 +133,7 @@ class Course extends Model
 
         $videos = json_decode($this->structure);
 
-        return '/videos/' . $videos[$id];
+        return $videos;
     }
 
     public function uploadDemo($lesson)
@@ -146,10 +150,6 @@ class Course extends Model
 
     public function getDemo()
     {
-        if ($this->demo == null)
-        {
-            return '/img/no-demo.png';
-        }
 
         return '/videos/' . $this->demo;
     }

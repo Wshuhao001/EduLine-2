@@ -14,6 +14,7 @@
     <!-- Custom styles for this template -->
 
     <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link href="//vjs.zencdn.net/5.19/video-js.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/main.css">
 </head>
 
@@ -124,5 +125,6 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="//vjs.zencdn.net/5.19/video.min.js"></script>
 </body>
 </html>

@@ -22,12 +22,13 @@
                             <img onclick="window.location.href='{{route('course.index', $course->id)}}'" align="center" class="img-fluid"  src="{{$course->getImage()}}">
                             <div class="card-body">
 
-                                <a href="#"><h5 align="center" class="card-title">{{$course->title}}</h5></a>
+                                <a href="{{route('course.index', $course->id)}}"><h5 align="center" class="card-title">{{$course->title}}</h5></a>
                                 <p class="card-text text-muted">{{$course->short_description}}</p>
+                                <a href="{{route('teacher.edit',$course->id)}}" class="card-text text-muted"><i class="fa fa-file-video-o fa-black" aria-hidden="true"></i> Добавити уроки</a>
                                 @if($course->status == 0)
-                                    <h5 align="center" class="text-muted">На модерації</h5>
+                                    <p class="card-text text-muted"><i class="fa fa-cogs fa-black" aria-hidden="true"></i> На модерації</p>
                                 @else
-                                    <h5 align="center" class="text-muted">Опубліковано</h5>
+                                    <p class="card-text text-muted"><i class="fa fa-check fa-black" aria-hidden="true"></i> Опубліковано</p>
                                 @endif
 
 
@@ -42,5 +43,7 @@
         </div>
 
     </main>
+
+    @include('footer')
 
 @endsection

@@ -172,7 +172,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="course-reviews">
+                            <div class="course-reviews mb-5">
 
                                 <div class="row">
                                     <div class="col-md-2">
@@ -237,5 +237,6 @@
             </div>
         </div>
     </div>
+
 
 @endsection

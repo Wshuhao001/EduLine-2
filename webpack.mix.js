@@ -13,7 +13,8 @@ let mix = require('laravel-mix');
 
 mix.styles([
     'resources/assets/css/font-awesome.css',
-    'resources/assets/css/main.css'
+    'resources/assets/css/main.css',
+    'resources/assets/css/vsg-skin.css'
 ], 'public/css/main.css');
 
 mix.copy('resources/assets/fonts', 'public/fonts');

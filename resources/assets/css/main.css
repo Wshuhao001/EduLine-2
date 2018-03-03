@@ -554,3 +554,21 @@ footer{
 	margin-left: 5px;
 	cursor: pointer;
 }
+
+
+.video-playlist{
+	background-color: #2B303B;
+	margin-top: 1px;
+}
+
+
+.next-video{
+	background-color: grey;
+	margin-top: 5px;
+}
+
+.video-description{
+	background-color: lightgrey;
+	height: 100px;
+	padding-left: 10px;
+}

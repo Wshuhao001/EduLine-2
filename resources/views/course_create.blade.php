@@ -90,30 +90,7 @@
                         </div>
 
 
-                        <div class="your-study-plan">
-                            <h4 class="text-muted font-weight-light">Навчальний план</h4>
-                            <hr>
-                            <p>Почніть створювати свій курс створивши уроки і додавши до них відео і завдання.</p>
-                            <div class="your-lessons-list">
-                                <div class="your-lesson">
-                                    <div class="row">
-                                        <div class="col-sm-3 font-weight-light mt-2 pl-5">Лекція 1</div>
-                                        <div class="col-sm-6"></div>
-                                        <div class="col-sm-3 text-right">
-                                            <div class="input-group">
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="input_course_avatar">
-                                                    <label class="custom-file-label" for="input_course_avatar"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <a href="#"><div class="btn btn-outline-primary mt-2 btn-block">Добавити урок</div></a>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block mt-3">Відправити на модерацію</button>
+                        <button type="submit" class="btn btn-primary btn-block mt-3">Продовжити...</button>
                     </div>
                     <div class="col-md-3"></div>
                 </div>
@@ -124,4 +101,7 @@
         </div>
     </main>
 
+    @include('footer')
+
 @endsection
+
