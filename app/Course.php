@@ -27,6 +27,12 @@ class Course extends Model
         return $this->hasMany(Structure::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+
 
     public static function add($fields)
     {
@@ -161,6 +167,7 @@ class Course extends Model
             return $this->category->title;
         }
     }
+
 
 
 

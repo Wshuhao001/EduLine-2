@@ -11,41 +11,48 @@
 |
 */
 
-Route::get('/', 'AllCoursesController@index');
+
+    Route::get('/', 'AllCoursesController@index');
 
 
-Route::get('/course/{id}', 'CourseController@index')->name('course.index');
-Route::get('/teacher/{id}/courses', 'AllCoursesController@teacherShow')->name('teacher_courses.index');
-
-
-
-Route::get('/course/{id}/opened', 'MyCourseController@index');
+    Route::get('/course/{id}', 'CourseController@index')->name('course.index');
+    Route::get('/course/category/{category_id}', 'AllCoursesController@categoryFilter')->name('course.category');
+    Route::get('/teacher/{id}/courses', 'AllCoursesController@teacherShow')->name('teacher_courses.index');
 
 
 
-Route::group(['middleware' => 'teacher'],function (){
-    Route::get('/teacher/courses/manage', 'TeacherController@index')->name('teacher.index');
-    Route::get('/teacher/course/create', 'TeacherController@create')->name('teacher.create');
-    Route::post('/teacher/course/create', 'TeacherController@store')->name('teacher.store');
-    Route::get('/teacher/course/{id}/addLessons', 'TeacherController@edit')->name('teacher.edit');
-    Route::put('/teacher/course/{id}/addLessons', 'TeacherController@update')->name('teacher.update');
+    Route::get('/course/{id}/{lesson_id}', 'MyCourseController@index')->name('myCourse.view');
 
-});
 
-Route::group(['middleware' => 'auth'],function (){
-    Route::get('/logout', 'AuthController@logout');
-});
 
-Route::group(['middleware' => 'guest'],function (){
-    Route::get('/register', 'AuthController@registerForm');
-    Route::post('/register', 'AuthController@register');
-    Route::get('/login','AuthController@loginForm');
-    Route::post('/login','AuthController@login');
-});
+    Route::group(['middleware' => 'teacher'],function (){
+        Route::get('/teacher/courses/manage', 'TeacherController@index')->name('teacher.index');
+        Route::get('/teacher/course/create', 'TeacherController@create')->name('teacher.create');
+        Route::post('/teacher/course/create', 'TeacherController@store')->name('teacher.store');
+        Route::get('/teacher/course/{id}/addLessons', 'TeacherController@edit')->name('teacher.edit');
+        Route::put('/teacher/course/{id}/addLessons', 'TeacherController@update')->name('teacher.update');
+        Route::get('/teacher/courses/{course_id}/words', 'WordsController@addForm')->name('words.addForm');
+        Route::put('/teacher/course/{course_id}/words', 'TeacherController@update')->name('words.update');
 
-Route::group(['prefix'=>'admin','namespace'=>'Admin', 'middleware' => 'admin'], function (){
-    Route::resource('/users',  'UserController');
-    Route::resource('/courses',  'CourseController');
-    Route::resource('/all_courses',  'AllCourseController');
-    Route::resource('/categories', 'CategoriesController');
-});
+    });
+
+    Route::group(['middleware' => 'auth'],function (){
+        Route::get('/logout', 'AuthController@logout');
+        Route::post('/comment', 'CommentsController@store');
+    });
+
+    Route::group(['middleware' => 'guest'],function (){
+        Route::get('/register', 'AuthController@registerForm');
+        Route::post('/register', 'AuthController@register');
+        Route::get('/login','AuthController@loginForm')->name('login');
+        Route::post('/login','AuthController@login');
+    });
+
+    Route::group(['prefix'=>'admin','namespace'=>'Admin', 'middleware' => 'admin'], function (){
+        Route::resource('/users',  'UserController');
+        Route::resource('/courses',  'CourseController');
+        Route::resource('/all_courses',  'AllCourseController');
+        Route::resource('/categories', 'CategoriesController');
+    });
+
+

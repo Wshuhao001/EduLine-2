@@ -39,7 +39,21 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Опис</span>
                             </div>
-                            <textarea name="description" class="form-control" aria-label="description">{{old('description')}}</textarea>
+                            <textarea name="description" rows="6" class="form-control" aria-label="description">{{old('description')}}</textarea>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Вимоги:</span>
+                            </div>
+                            <textarea name="requirements" rows="3" class="form-control" aria-label="requirements">{{old('requirements')}}</textarea>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Нові знання і вміння:</span>
+                            </div>
+                            <textarea name="skills" rows="3" class="form-control" aria-label="skills">{{old('skills')}}</textarea>
                         </div>
 
                         <div class="input-group mb-3">

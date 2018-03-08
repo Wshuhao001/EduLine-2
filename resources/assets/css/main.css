@@ -341,12 +341,9 @@ footer{
 	margin-left: 10px;
 }
 .course-reviews{
-	margin-top: 5px;
 	width: 100%;
 	background-color: #fff;
-	-webkit-box-shadow: 0px 0px 31px -12px rgba(143,143,143,1);
-	-moz-box-shadow: 0px 0px 31px -12px rgba(143,143,143,1);
-	box-shadow: 0px 0px 31px -12px rgba(143,143,143,1);
+
 	border: 1px solid rgba(0,0,0,.125);
 	border-bottom-right-radius: .25rem;
     border-bottom-left-radius: .25rem;
@@ -572,3 +569,7 @@ footer{
 	height: 100px;
 	padding-left: 10px;
 }
+.hided{
+	display: none;
+}
+

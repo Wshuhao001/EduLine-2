@@ -11,7 +11,7 @@
                 @include('errors')
                 <p>Створіть уроки і додайте до них відео і завдання.</p>
                 <div class="your-lessons-list" >
-                    @if($course->getLesson() !== null)
+                    @if($course->getLesson() != null)
                     @foreach($course->getLesson() as $tutor)
                     <div class="your-lesson mt-2">
                         <div class="row">

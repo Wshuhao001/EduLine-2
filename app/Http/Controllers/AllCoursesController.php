@@ -26,4 +26,17 @@ class AllCoursesController extends Controller
         $courses = Course::where('user_id', $teacher->id)->get();
         return view('teacher_courses',['teacher' => $teacher, 'courses' => $courses]);
     }
+
+    public function categoryFilter($category_id)
+    {
+
+        $categories = Category::all();
+        $category = Category::where('id', $category_id)->firstOrFail();
+
+        $courses = Course::all()
+            ->where('status', 1)
+            ->where('category_id', $category_id);
+
+        return view('courses_category',['courses' => $courses, 'category' => $category, 'categories' => $category]);
+    }
 }

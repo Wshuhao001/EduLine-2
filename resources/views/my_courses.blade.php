@@ -24,7 +24,12 @@
 
                                 <a href="{{route('course.index', $course->id)}}"><h5 align="center" class="card-title">{{$course->title}}</h5></a>
                                 <p class="card-text text-muted">{{$course->short_description}}</p>
-                                <a href="{{route('teacher.edit',$course->id)}}" class="card-text text-muted"><i class="fa fa-file-video-o fa-black" aria-hidden="true"></i> Добавити уроки</a>
+                                <a href="{{route('teacher.edit',$course->id)}}" class="card-text text-muted">
+                                    <i class="fa fa-file-video-o fa-black" aria-hidden="true"></i> Добавити уроки
+                                </a>
+                                <a href="{{route('teacher.edit',$course->id)}}" class="card-text text-muted">
+                                    <i class="fa fa-file-video-o fa-black" aria-hidden="true"></i> Добавити терміни
+                                </a>
                                 @if($course->status == 0)
                                     <p class="card-text text-muted"><i class="fa fa-cogs fa-black" aria-hidden="true"></i> На модерації</p>
                                 @else

@@ -41,7 +41,7 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <h5 class="font-weight-light"><i class="fa fa-calendar-plus-o fa-black" aria-hidden="true"></i> Курси</h5>
-                                    <a class="dropdown-item" href="#">Всі курси</a>
+                                    <a class="dropdown-item" href="/">Всі курси</a>
                                     <a class="dropdown-item" href="#">Мої курси</a>
                                     <a class="dropdown-item" href="#">Слова з курсів</a>
                                 </div>
@@ -67,22 +67,21 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <h5 class="font-weight-light"><i class="fa fa-code fa-black" aria-hidden="true"></i> Розробка</h5>
-                                    <a class="dropdown-item" href="#">Веб-розробка</a>
-                                    <a class="dropdown-item" href="#">Мобільні програми</a>
-                                    <a class="dropdown-item" href="#">Розробка ігор</a>
+                                    @foreach($dev_categories as $dev_cat)
+                                    <a class="dropdown-item" href="{{route('course.category',$dev_cat->id)}}">{{$dev_cat->title}}</a>
+                                    @endforeach
                                 </div>
                                 <div class="col-sm-4">
                                     <h5 class="font-weight-light"><i class="fa fa-language fa-black" aria-hidden="true"></i> Вивчення мов</h5>
-                                    <a class="dropdown-item" href="#">Англійська мова</a>
-                                    <a class="dropdown-item" href="#">Польська мова</a>
-                                    <a class="dropdown-item" href="#">Німецька мова</a>
-                                    <a class="dropdown-item" href="#">Інші мови</a>
+                                    @foreach($lang_categories as $lang_cat)
+                                        <a class="dropdown-item" href="{{route('course.category',$lang_cat->id)}}">{{$lang_cat->title}}</a>
+                                    @endforeach
                                 </div>
                                 <div class="col-sm-4">
                                     <h5 class="font-weight-light"><i class="fa fa-briefcase fa-black" aria-hidden="true"></i> Інше</h5>
-                                    <a class="dropdown-item" href="#">Бізнес</a>
-                                    <a class="dropdown-item" href="#">Маркетинг</a>
-                                    <a class="dropdown-item" href="#">Німецька мова</a>
+                                    @foreach($business_categories as $business_cat)
+                                        <a class="dropdown-item" href="{{route('course.category',$business_cat->id)}}">{{$business_cat->title}}</a>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

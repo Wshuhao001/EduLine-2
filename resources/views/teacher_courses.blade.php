@@ -35,7 +35,7 @@
             <div  class="col-md-4">
                 <div onclick="window.location.href='{{route('course.index', $course->id)}}'" class="card mb-4 box-shadow">
                     @if($course->image !== null)
-                        <img src="{{$course->image}}">
+                        <img height="200" src="{{$course->getImage()}}">
                     @else
                         <img  src="/img/no-course-img.jpg">
                     @endif
@@ -47,14 +47,9 @@
                         <div class="bottom-category">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <p class="card-text"><small>By </small> <small class="text-muted link">{{$course->user_id}}</small></p>
+                                    <p class="card-text"><small>By </small> <small class="text-muted link">{{$course->author->name}}</small></p>
                                 </div>
 
-                                <div class="col-sm-6 text-right">
-                                    <i class="fa fa-comment-o fa-black"></i>
-                                    <a class="text-muted">1</a>
-
-                                </div>
                             </div>
 
 

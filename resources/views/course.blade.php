@@ -33,34 +33,20 @@
                 <div class="col-md-9">
                     <div class="word-list">
                         <div class="row no-mobile">
+                            @if($course->requirements != null)
                             <div class="col-md-12 new-skills">
                                 <h4 class="text-muted">Чому я научусь ?</h4>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <ul>
-                                            @for($i = 0; $i < 3; $i++)
-                                            <li class="features"><i class="fa fa-check fa-black" aria-hidden="true"></i>{{$course->skills}}</li>
-                                            @endfor
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul>
-                                            @for($i = 0; $i < 3; $i++)
-                                                <li class="features"><i class="fa fa-check fa-black" aria-hidden="true"></i>{{$course->skills}}</li>
-                                            @endfor
-                                        </ul>
-                                    </div>
-                                </div>
+                                <p class="text-muted">{{$course->skills}}</p>
                             </div>
+                            @endif
+                            @if($course->requirements != null)
                             <div class="col-md-9 requirements">
                                 <h4 class="text-muted">Вимоги</h4>
                                 <ul class="list-group">
-                                    <li class="list-group-item">{{$course->requirements}}</li>
-                                    <li class="list-group-item">{{$course->requirements}}</li>
-                                    <li class="list-group-item">{{$course->requirements}}</li>
-                                    <li class="list-group-item">{{$course->requirements}}</li>
+                                    <div class="list-group-item">{{$course->requirements}}</div>
                                 </ul>
                             </div>
+                            @endif
                         </div>
                         <div class="row">
                             <div class="col-md-12 description">
@@ -104,34 +90,7 @@
 
                         <div class="row">
 
-                            <div class="col-md-12 edu-plan">
-                                <h4 class="text-muted">Навчальний план цього курсу (Доробити)</h4>
-                                <div class="col-md-12 plan-lesson">
-                                    <div class="row">
-                                        <div class="col-sm-8"><h5 class="text-muted text-center lesson-title"><i class="fa fa-arrow-right text-muted" aria-hidden="true"></i> Вивчення HTML</h5></div>
-                                        <div class="col-sm-4 text-left lesson-title">07:47</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 plan-lesson">
-                                    <div class="row">
-                                        <div class="col-sm-8"><h5 class="text-muted text-center lesson-title"><i class="fa fa-arrow-right text-muted" aria-hidden="true"></i> Вивчення HTML</h5></div>
-                                        <div class="col-sm-4 text-left lesson-title">07:47</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 plan-lesson">
-                                    <div class="row">
-                                        <div class="col-sm-8"><h5 class="text-muted text-center lesson-title"><i class="fa fa-arrow-right text-muted" aria-hidden="true"></i> Вивчення HTML</h5></div>
-                                        <div class="col-sm-4 text-left lesson-title">07:47</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 plan-lesson">
-                                    <div class="row">
-                                        <div class="col-sm-8"><h5 class="text-muted text-center lesson-title"><i class="fa fa-arrow-right text-muted" aria-hidden="true"></i> Вивчення HTML</h5></div>
-                                        <div class="col-sm-4 text-left lesson-title">07:47</div>
-                                    </div>
-                                </div>
-
-                            </div>
+                            
                             <div class="col-md-12 about-teacher">
                                 <div align="center" class="teacher-info justify-content-center">
                                     <p align="center" class="text-muted small-head-text">Про викладача</p>
@@ -145,7 +104,7 @@
 
                                         <ul>
                                             <li><a href="{{route('teacher_courses.index', $course->author->id)}}"><i class="fa fa-youtube-play fa-black" aria-hidden="true"></i> 5 курсів</a> </li>
-                                            <li><i class="fa fa-user fa-black" aria-hidden="true"></i> 65 студентів</li>
+                                            <li><i class="fa fa-user fa-black" aria-hidden="true"></i> {{$course->students}} студентів</li>
                                         </ul>
                                     </div>
                                     <div class="col-md-8">
@@ -156,39 +115,37 @@
                             </div>
                             <h3 align="center" class="text-muted reviews-title">Відгуки студентів</h3>
                             <div class="course-reviews">
+                                <div class="row">
+                                    <div class="col-md-11 mt-3 ml-3">
+                                        <form action="/comment" method="post" role="form">
+                                            {{csrf_field()}}
+                                            <input type="hidden" name="course_id" value="{{$course->id}}">
+                                            <textarea name="course_review" class="form-control course-review-area" rows="5"></textarea>
+                                            <button type="submit" class="btn btn-primary mt-2 mb-3">Залишити коментар</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            @if(!$course->comments->isEmpty())
+                            @foreach($course->comments as $comment)
+                            <div class="course-reviews mb-3">
 
                                 <div class="row">
                                     <div class="col-md-2">
                                         <div class="course-review-info">
-                                            <img height="60" width="60" class="rounded-circle" src="/img/teacher.jpg">
-
+                                            <img src="/img/student.png">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <p class="text-left review-author"><a href="#">Jason Brooksbank</a></p>
+                                        <p class="text-left review-author">{{$comment->author->name}}</p>
                                     </div>
                                     <div class="col-md-7 review-text">
-                                        <p>Багато дізнався з цього курсу !!! Все дуже сподобалося. Багато дізнався з цього курсу !!! Все дуже сподобалося</p>
+                                        <p>{{$comment->text}}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="course-reviews mb-5">
-
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <div class="course-review-info">
-                                            <img height="60" width="60" class="rounded-circle" src="/img/teacher.jpg">
-
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <p class="text-left review-author"><a href="#">Jason Brooksbank</a></p>
-                                    </div>
-                                    <div class="col-md-7 review-text">
-                                        <p>Багато дізнався з цього курсу !!! Все дуже сподобалося. Багато дізнався з цього курсу !!! Все дуже сподобалося</p>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
+                            @endif
                         </div>
                     </div>
 

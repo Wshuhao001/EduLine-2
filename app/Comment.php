@@ -8,12 +8,12 @@ class Comment extends Model
 {
     public function author()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function course()
     {
-        return $this->hasOne(Course::class);
+        return $this->belongsTo(Course::class);
     }
 
 

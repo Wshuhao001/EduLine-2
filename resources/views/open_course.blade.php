@@ -12,9 +12,11 @@
             </style>
 
             <div class="container">
+
+
                 <div class="row">
                     <div class="col-md-4">
-                        <img align="center" class="img-fluid course-avatar" src="img/course.jpg" alt="">
+                        <img align="center" class="img-fluid course-avatar" src="{{$course->getImage()}}" alt="">
                     </div>
                     <div class="col-md-8">
                         <h1 class="jumbotron-heading text-light">{{$course->title}}</h1>
@@ -41,41 +43,54 @@
             </div>
         </section>
 
-        @foreach($course->getLesson() as $tutorial)
+
 
 
         <div class="container ">
+        @if($lessons != null)
             <div class="row mt-3">
                 <div class="col-md-12">
                     <video class="video-js w-100" height="560" controls
                            poster="{{$course->getImage()}}" data-setup="{}">
-                        <source src="/videos/{{$tutorial}}" type='video/mp4'>
+                        <source src="/videos/{{$lessons[$lesson_id]}}" type='video/mp4'>
                     </video>
                 </div>
                 <div class="col-md-9">
                     <div class="video-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor veniam libero laudantium eius fugiat temporibus ipsa aut eveniet, provident nam rerum, incidunt iure quas dolore aperiam officiis, voluptates earum corrupti.</div>
                 </div>
                 <div class="col-md-3">
-                    <div class="next-video"></div>
-                    <a href="#" class="text-muted">Урок 1</a>
-                    <div class="next-video"></div>
-                    <a href="#" class="text-muted">Урок 2</a>
-                    <div class="next-video"></div>
-                    <a href="#" class="text-muted">Урок 3</a>
-                    <div class="next-video"></div>
-                    <a href="#" class="text-muted">Урок 4</a>
+                    @if($lesson_id != 0)
+                        <h4 class="text-muted">Попередній урок:</h4>
+                        <div class="next-video">
+                            <video onclick="window.location.href='{{route('myCourse.view',[$course->id, $lesson_id-1])}}'" class="video-js w-100" controls
+                                   poster="{{$course->getImage()}}" data-setup="{}">
+                            </video>
+                        </div>
+                        <a href="{{route('myCourse.view',[$course->id, $lesson_id-1])}}" class="text-muted">Урок {{$lesson_id-1}}</a>
+                    @endif
+
+                        <hr>
+                    @if($lesson_id != count($lessons)-1)
+                        <h4 class="text-muted">Наступний урок:</h4>
+                        <div class="next-video">
+                            <video onclick="window.location.href='{{route('myCourse.view',[$course->id, $lesson_id+1])}}'" class="video-js w-100" controls
+                                   poster="{{$course->getImage()}}" data-setup="{}">
+                            </video>
+                        </div>
+                        <a href="{{route('myCourse.view',[$course->id, $lesson_id+1])}}" class="text-muted">Урок {{$lesson_id+1}}</a>
+                    @endif
+
+
+
+
+
                 </div>
             </div>
-
-                <
-
+        @else
+            <h3 align="center" class="mt-2 text-muted">Автор ще не додав уроки</h3>
+        @endif
 
         </div>
-
-        @endforeach
-
-
-
 
     </main>
 
