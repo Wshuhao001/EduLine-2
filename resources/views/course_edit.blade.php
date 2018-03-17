@@ -4,7 +4,7 @@
 
     <div class="container mt-3">
 
-        {{Form::open(['route'=>['teacher.update', $course->id],'files'=> true,'method'=>'put'])}}
+        {{Form::open(['route'=>['teacher.update', $course->course_id],'files'=> true,'method'=>'put'])}}
             <div class="your-study-plan">
                 <h4 class="text-muted font-weight-light">Навчальний план</h4>
                 <hr>

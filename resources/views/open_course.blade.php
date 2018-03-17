@@ -20,7 +20,8 @@
                     </div>
                     <div class="col-md-8">
                         <h1 class="jumbotron-heading text-light">{{$course->title}}</h1>
-                        <button align="center" type="submit" class="btn btn-primary">Перейти до уроку</button>
+                        <a href="{{route('course.lessons', [$course->course_id, 0])}}"><button  align="center" class="btn btn-primary ml-3">Перейти до уроків</button></a>
+                        <a href="{{route('course.words', $course->course_id)}}"><button  align="center" class="btn btn-primary ml-3">Перейти до вивчення термінів</button></a>
                         <p class="lead text-light">{{$course->description}}</p>
                         <div class="row">
                             <div class="col-sm-4">
@@ -62,22 +63,22 @@
                     @if($lesson_id != 0)
                         <h4 class="text-muted">Попередній урок:</h4>
                         <div class="next-video">
-                            <video onclick="window.location.href='{{route('myCourse.view',[$course->id, $lesson_id-1])}}'" class="video-js w-100" controls
+                            <video onclick="window.location.href='{{route('course.lessons',[$course->course_id, $lesson_id-1])}}'" class="video-js w-100" controls
                                    poster="{{$course->getImage()}}" data-setup="{}">
                             </video>
                         </div>
-                        <a href="{{route('myCourse.view',[$course->id, $lesson_id-1])}}" class="text-muted">Урок {{$lesson_id-1}}</a>
+                        <a href="{{route('course.lessons',[$course->course_id, $lesson_id-1])}}" class="text-muted">Урок {{$lesson_id-1}}</a>
                     @endif
 
                         <hr>
                     @if($lesson_id != count($lessons)-1)
                         <h4 class="text-muted">Наступний урок:</h4>
                         <div class="next-video">
-                            <video onclick="window.location.href='{{route('myCourse.view',[$course->id, $lesson_id+1])}}'" class="video-js w-100" controls
+                            <video onclick="window.location.href='{{route('course.lessons',[$course->course_id, $lesson_id+1])}}'" class="video-js w-100" controls
                                    poster="{{$course->getImage()}}" data-setup="{}">
                             </video>
                         </div>
-                        <a href="{{route('myCourse.view',[$course->id, $lesson_id+1])}}" class="text-muted">Урок {{$lesson_id+1}}</a>
+                        <a href="{{route('course.lessons',[$course->course_id, $lesson_id+1])}}" class="text-muted">Урок {{$lesson_id+1}}</a>
                     @endif
 
 

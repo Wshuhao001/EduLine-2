@@ -19,17 +19,20 @@
 
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
-                            <img onclick="window.location.href='{{route('course.index', $course->id)}}'" align="center" class="img-fluid"  src="{{$course->getImage()}}">
+                            <img onclick="window.location.href='{{route('course.index', $course->course_id)}}'" align="center" class="img-fluid"  src="{{$course->getImage()}}">
                             <div class="card-body">
 
-                                <a href="{{route('course.index', $course->id)}}"><h5 align="center" class="card-title">{{$course->title}}</h5></a>
+                                <a href="{{route('course.index', $course->course_id)}}"><h5 align="center" class="card-title">{{$course->title}}</h5></a>
                                 <p class="card-text text-muted">{{$course->short_description}}</p>
-                                <a href="{{route('teacher.edit',$course->id)}}" class="card-text text-muted">
+                                <a href="{{route('teacher.edit',$course->course_id)}}" class="card-text text-muted">
                                     <i class="fa fa-file-video-o fa-black" aria-hidden="true"></i> Добавити уроки
                                 </a>
-                                <a href="{{route('teacher.edit',$course->id)}}" class="card-text text-muted">
-                                    <i class="fa fa-file-video-o fa-black" aria-hidden="true"></i> Добавити терміни
-                                </a>
+                                <p>
+                                    <a href="{{route('words.addForm',$course->course_id)}}" class="card-text text-muted">
+                                        <i class="fa fa-file-word-o fa-black" aria-hidden="true"></i> Добавити терміни
+                                    </a>
+                                </p>
+
                                 @if($course->status == 0)
                                     <p class="card-text text-muted"><i class="fa fa-cogs fa-black" aria-hidden="true"></i> На модерації</p>
                                 @else

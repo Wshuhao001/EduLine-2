@@ -119,7 +119,7 @@
                                     <div class="col-md-11 mt-3 ml-3">
                                         <form action="/comment" method="post" role="form">
                                             {{csrf_field()}}
-                                            <input type="hidden" name="course_id" value="{{$course->id}}">
+                                            <input type="hidden" name="course_id" value="{{$course->course_id}}">
                                             <textarea name="course_review" class="form-control course-review-area" rows="5"></textarea>
                                             <button type="submit" class="btn btn-primary mt-2 mb-3">Залишити коментар</button>
                                         </form>
@@ -159,9 +159,27 @@
                             </div>
                             <h4 align="center">{{$course->title}}</h4>
                             <h3 align="center">{{$course->price}}$</h3>
-                            <button type="button" class="btn btn-warning btn-block">Купити</button>
 
-                            <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#exampleModal">Спробувати</button>
+                            @if(Auth::check())
+
+                                <form id="payment" name="payment" method="post" action="https://sci.interkassa.com/" enctype="utf-8">
+                                    <input type="hidden" name="ik_co_id" value="5aa84a6c3b1eaf55298b4570">
+                                    <input type="hidden" name="ik_pm_no" value="{{time()}}">
+                                    <input type="hidden" name="ik_am" value="{{$course->price}}">
+                                    <input type="hidden" name="ik_cur" value="UAH">
+                                    <input type="hidden" name="ik_x_login" value="{{Auth::user()->id}}">
+                                    <input type="hidden" name="ik_x_course" value="{{$course->course_id}}">
+                                    <input type="hidden" name="ik_desc" value="Продажа курсу">
+                                    <input type="submit" class="btn btn-warning btn-block" value="Купити">
+                                </form>
+                            @else
+                                <a href="/login"><input type="submit" class="btn btn-warning btn-block" value="Купити"></a>
+                            @endif
+
+
+
+
+                            <button type="button" class="btn btn-outline-primary btn-block mt-3" data-toggle="modal" data-target="#exampleModal">Спробувати</button>
                         </div>
                     </div>
                 </div>

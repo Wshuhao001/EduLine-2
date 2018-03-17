@@ -28,7 +28,7 @@
                     @if(count($categories) > 5 )
                         @for($i = 1; $i < 5; $i++)
                             <div onclick="window.location.href='{{route('course.category',$i)}}'" class="col-md-2 font-weight-bold main-words-categ">
-                                <a href="{{route('course.category',$i)}}">{{$categories[$i]->title}}</a>
+                                <a href="{{route('course.category',$i)}}">{{$categories[$i-1]->title}}</a>
                             </div>
                         @endfor
 
@@ -36,13 +36,11 @@
 
                     @for($i = 1; $i < count($categories); $i++)
                         <div onclick="window.location.href='{{route('course.category',$i)}}'" class="col-md-2 font-weight-bold main-words-categ">
-                            <a href="{{route('course.category',$i)}}">{{$categories[$i]->title}}</a>
+                            <a href="{{route('course.category',$i)}}">{{$categories[$i-1]->title}}</a>
                         </div>
                     @endfor
 
                     @endif
-
-
 
 
                 </div>
@@ -52,7 +50,7 @@
                     @foreach($courses as $course)
 
                     <div  class="col-md-4">
-                        <div onclick="window.location.href='{{route('course.index', $course->id)}}'" class="card mb-4 box-shadow">
+                        <div onclick="window.location.href='{{route('course.index', $course->course_id)}}'" class="card mb-4 box-shadow">
                             @if($course->image != null)
                                 <img height="200" src="{{$course->getImage()}}">
                             @else
@@ -60,7 +58,7 @@
                             @endif
                             <div class="card-body">
                                 <p class="card-text"><small class="card-info">{{$course->getCategoryTitle()}}</small></p>
-                                <a href="{{route('course.index', $course->id)}}"><h5 class="card-title">{{$course->title}}</h5></a>
+                                <a href="{{route('course.index', $course->course_id)}}"><h5 class="card-title">{{$course->title}}</h5></a>
                                 <p maxlength="5" class="card-text text-muted">{{$course->short_description}}</p>
 
                                 <div class="bottom-category">

@@ -14,7 +14,7 @@
         <div class="main mt-5">
 
             <div class="container">
-            {{Form::open(['route'=>['words.update', $course->id],'files'=> true,'method'=>'put'])}}
+            {{Form::open(['route'=>['words.update', $course->course_id],'files'=> true,'method'=>'put'])}}
                 @include('errors')
                 @if($words !=null)
                 @foreach($words as $word)
@@ -24,7 +24,7 @@
                                 <div class="col-md-5">
                                     <label for="your_course_title">Слово</label>
                                     <div class="input-group mb-3 ml-2">
-                                        <input name="word" value="{{$word->word}}"  type="text" class="form-control"  aria-label="Username" aria-describedby="your_course_title">
+                                        <input name="word[]" value="{{$word->word}}"  type="text" class="form-control"  aria-label="Username" aria-describedby="your_course_title">
                                     </div>
 
                                 </div>
@@ -33,7 +33,7 @@
                                 <div class="col-md-5">
                                     <label for="your_course_title">Значення</label>
                                     <div class="input-group mb-3 mr-3">
-                                        <input name="translate" value="{{$word->translate}}" type="text" class="form-control" aria-label="Username" aria-describedby="your_course_title">
+                                        <input name="translate[]" value="{{$word->translate}}" type="text" class="form-control" aria-label="Username" aria-describedby="your_course_title">
                                     </div>
 
                                 </div>
@@ -48,7 +48,7 @@
                         <div class="col-md-5">
                             <label for="your_course_title">Слово</label>
                             <div class="input-group mb-3 ml-2">
-                                <input name="word"  type="text" class="form-control" aria-label="Username" aria-describedby="your_course_title">
+                                <input name="word[]"  type="text" class="form-control" aria-label="Username" aria-describedby="your_course_title">
                             </div>
 
                         </div>
@@ -57,7 +57,7 @@
                         <div class="col-md-5">
                             <label for="your_course_title">Значення</label>
                             <div class="input-group mb-3 mr-3">
-                                <input name="translate" type="text" class="form-control"  aria-label="Username" aria-describedby="your_course_title">
+                                <input name="translate[]" type="text" class="form-control"  aria-label="Username" aria-describedby="your_course_title">
                             </div>
 
                         </div>

@@ -35,11 +35,11 @@
                                 <legend class="col-form-label col-sm-2 pt-0">Хто ви ?</legend>
                                 <div class="col-sm-10">
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline1" name="status" checked value="1" class="custom-control-input">
+                                        <input type="radio" id="customRadioInline1" name="status" checked value="0" class="custom-control-input">
                                         <label class="custom-control-label" for="customRadioInline1">Учень</label>
                                     </div>
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline2" name="status" value="2" class="custom-control-input">
+                                        <input type="radio" id="customRadioInline2" name="status" value="1" class="custom-control-input">
                                         <label class="custom-control-label" for="customRadioInline2">Вчитель</label>
                                     </div>
                                 </div>

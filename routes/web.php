@@ -20,8 +20,20 @@
     Route::get('/teacher/{id}/courses', 'AllCoursesController@teacherShow')->name('teacher_courses.index');
 
 
+    Route::get('course/{course_id}/words', 'WordsController@show')->name('course.words'); // Має бути першим ніж індекс ??
 
-    Route::get('/course/{id}/{lesson_id}', 'MyCourseController@index')->name('myCourse.view');
+    Route::get('/course/{id}/{lesson_id}', 'MyCourseController@index')->name('course.lessons');
+
+    Route::get('/good_payment', 'PaymentController@good');
+
+    Route::get('/bad_payment', 'PaymentController@bad');
+
+    Route::get('/waiting_payment', 'PaymentController@waiting');
+
+    Route::get('/payment', 'PaymentController@store');
+
+
+
 
 
 
@@ -32,13 +44,14 @@
         Route::get('/teacher/course/{id}/addLessons', 'TeacherController@edit')->name('teacher.edit');
         Route::put('/teacher/course/{id}/addLessons', 'TeacherController@update')->name('teacher.update');
         Route::get('/teacher/courses/{course_id}/words', 'WordsController@addForm')->name('words.addForm');
-        Route::put('/teacher/course/{course_id}/words', 'TeacherController@update')->name('words.update');
+        Route::put('/teacher/courses/{course_id}/words', 'WordsController@update')->name('words.update');
 
     });
 
     Route::group(['middleware' => 'auth'],function (){
         Route::get('/logout', 'AuthController@logout');
         Route::post('/comment', 'CommentsController@store');
+
     });
 
     Route::group(['middleware' => 'guest'],function (){

@@ -9,9 +9,6 @@ class MyCourseController extends Controller
 {
     public function index($id,$lesson_id)
     {
-
-
-
         $course = Course::where('id',$id)->firstOrFail();
         $lessons = $course->getLesson();
 
@@ -21,4 +18,8 @@ class MyCourseController extends Controller
 
         return view('open_course',['course'=>$course, 'lessons'=>$lessons, 'lesson_id'=>$lesson_id]);
     }
+
+
+
+
 }

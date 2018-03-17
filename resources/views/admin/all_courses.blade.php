@@ -23,12 +23,12 @@
 
                 @foreach($courses as $course)
                     <tr>
+                        <td>{{$course->course_id}}</td>
                         <td>{{$course->id}}</td>
-                        <td>{{$course->user_id}}</td>
                         <td>{{$course->title}}</td>
                         <td>{{$course->description}}</td>
                         <td>
-                            {{Form::open(['route'=>['all_courses.destroy', $course->id], 'method'=>'delete'])}}
+                            {{Form::open(['route'=>['all_courses.destroy', $course->course_id], 'method'=>'delete'])}}
                             <button onclick="return confirm('Ви впевнені ?')" type="submit" class="no-btn">
                                 <i class="fa fa-remove fa-black"></i>
                             </button>

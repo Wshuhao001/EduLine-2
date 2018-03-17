@@ -21,7 +21,6 @@ class AuthController extends Controller
             'password'=>'required'
         ]);
 
-
         User::add($request->all());
 
 
