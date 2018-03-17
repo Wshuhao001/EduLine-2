@@ -20,8 +20,8 @@
                 </div>
                 <div class="col-md-8">
                     <h1 class="jumbotron-heading text-light">{{$course->title}}</h1>
-                    <a href="{{route('course.lessons', [$course->course_id, 0])}}"><button  align="center" class="btn btn-primary ml-3">Перейти до уроків</button></a>
-                    <a href="{{route('course.words', $course->course_id)}}"><button  align="center" class="btn btn-primary ml-3">Перейти до вивчення термінів</button></a>
+                    <a href="{{route('course.lessons', [$course->id, 0])}}"><button  align="center" class="btn btn-primary ml-3">Перейти до уроків</button></a>
+                    <a href="{{route('course.words', $course->id)}}"><button  align="center" class="btn btn-primary ml-3">Перейти до вивчення термінів</button></a>
                     <p class="lead text-light">{{$course->description}}</p>
                     <div class="row">
                         <div class="col-sm-4">

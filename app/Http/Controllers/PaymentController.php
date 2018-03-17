@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Auth;
 class PaymentController extends Controller
 {
 
-    public function store()
+    public function store(Request $request)
     {
         $comment = new Comment;
-        $comment->text = '123';
+        $comment->text = $request->get('ik_x_course');
         $comment->course_id = 1;
         $comment->user_id = 1;
 

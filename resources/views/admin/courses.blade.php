@@ -24,13 +24,13 @@
 
                 @foreach($courses as $course)
                 <tr>
-                    <td>{{$course->course_id}}</td>
                     <td>{{$course->id}}</td>
+                    <td>{{$course->user_id}}</td>
                     <td>{{$course->title}}</td>
                     <td>{{$course->description}}</td>
-                    <td><a href="{{route('courses.edit', $course->course_id)}}">Підтвердити</a></td>
+                    <td><a href="{{route('courses.edit', $course->id)}}">Підтвердити</a></td>
                     <td>
-                        {{Form::open(['route'=>['courses.destroy', $course->course_id], 'method'=>'delete'])}}
+                        {{Form::open(['route'=>['courses.destroy', $course->id], 'method'=>'delete'])}}
                         <button onclick="return confirm('Ви впевнені ?')" type="submit" class="no-btn">
                             <i class="fa fa-remove fa-black"></i>
                         </button>

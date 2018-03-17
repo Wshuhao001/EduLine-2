@@ -119,7 +119,7 @@
                                     <div class="col-md-11 mt-3 ml-3">
                                         <form action="/comment" method="post" role="form">
                                             {{csrf_field()}}
-                                            <input type="hidden" name="course_id" value="{{$course->course_id}}">
+                                            <input type="hidden" name="course_id" value="{{$course->id}}">
                                             <textarea name="course_review" class="form-control course-review-area" rows="5"></textarea>
                                             <button type="submit" class="btn btn-primary mt-2 mb-3">Залишити коментар</button>
                                         </form>
@@ -168,7 +168,7 @@
                                     <input type="hidden" name="ik_am" value="{{$course->price}}">
                                     <input type="hidden" name="ik_cur" value="UAH">
                                     <input type="hidden" name="ik_x_login" value="{{Auth::user()->id}}">
-                                    <input type="hidden" name="ik_x_course" value="{{$course->course_id}}">
+                                    <input type="hidden" name="ik_x_course" value="{{$course->id}}">
                                     <input type="hidden" name="ik_desc" value="Продажа курсу">
                                     <input type="submit" class="btn btn-warning btn-block" value="Купити">
                                 </form>

@@ -26,9 +26,9 @@ class TeacherController extends Controller
 
 
         $this->validate($request,[
-            'title'             =>  'required|min:10|max:56|unique:courses',
-            'short_description' =>  'required|min:10|max:120',
-            'description'       =>  'required|min:25|max:500',
+            'title'             =>  'required|max:56|unique:courses',
+            'short_description' =>  'required|max:120',
+            'description'       =>  'required|max:500',
             'category_id'       =>  'required|numeric',
             'image'             =>  'image',
             'demo'              =>  'mimes:mp4,avi',

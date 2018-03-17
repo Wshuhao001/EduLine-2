@@ -14,7 +14,7 @@
         <div class="main mt-5">
 
             <div class="container">
-            {{Form::open(['route'=>['words.update', $course->course_id],'files'=> true,'method'=>'put'])}}
+            {{Form::open(['route'=>['words.update', $course->id],'files'=> true,'method'=>'put'])}}
                 @include('errors')
                 @if($words !=null)
                 @foreach($words as $word)
