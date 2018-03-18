@@ -20,7 +20,7 @@
                         <p class="text-light">Автор: <a class="text-light" href="{{route('teacher_courses.index', $course->author->id)}}">{{$course->author->name}}</a></p>
                     </div>
                     <div class="col-sm-3 text-left">
-                        <p class="text-light">Зареєстрованих студентів: {{$course->students}}</p>
+                        <p class="text-light">Зареєстрованих студентів: {{$course->countStudents()}}</p>
                     </div>
                 </div>
 
@@ -161,17 +161,21 @@
                             <h3 align="center">{{$course->price}}$</h3>
 
                             @if(Auth::check())
+                                @if($course->checkPay(Auth::user()->id) == true)
+                                    <a href="{{route('course.lessons', [$course->id, 0])}}"><input type="submit" class="btn btn-warning btn-block" value="Перейти до перегляду" ></a>
+                                @else
+                                    <form id="payment" name="payment" method="post" action="https://sci.interkassa.com/" enctype="utf-8">
+                                        <input type="hidden" name="ik_co_id" value="5aa84a6c3b1eaf55298b4570">
+                                        <input type="hidden" name="ik_pm_no" value="{{time()}}">
+                                        <input type="hidden" name="ik_am" value="{{$course->price}}">
+                                        <input type="hidden" name="ik_cur" value="UAH">
+                                        <input type="hidden" name="ik_x_login" value="{{Auth::user()->id}}">
+                                        <input type="hidden" name="ik_x_course" value="{{$course->id}}">
+                                        <input type="hidden" name="ik_desc" value="Продажа курсу">
+                                        <input type="submit" class="btn btn-warning btn-block" value="Купити">
+                                    </form>
+                                @endif
 
-                                <form id="payment" name="payment" method="post" action="https://sci.interkassa.com/" enctype="utf-8">
-                                    <input type="hidden" name="ik_co_id" value="5aa84a6c3b1eaf55298b4570">
-                                    <input type="hidden" name="ik_pm_no" value="{{time()}}">
-                                    <input type="hidden" name="ik_am" value="{{$course->price}}">
-                                    <input type="hidden" name="ik_cur" value="UAH">
-                                    <input type="hidden" name="ik_x_login" value="{{Auth::user()->id}}">
-                                    <input type="hidden" name="ik_x_course" value="{{$course->id}}">
-                                    <input type="hidden" name="ik_desc" value="Продажа курсу">
-                                    <input type="submit" class="btn btn-warning btn-block" value="Купити">
-                                </form>
                             @else
                                 <a href="/login"><input type="submit" class="btn btn-warning btn-block" value="Купити"></a>
                             @endif

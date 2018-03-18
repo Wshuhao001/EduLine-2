@@ -97,9 +97,9 @@
                             <div class="input-group mb-3">
 
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">$</span>
+                                    <span class="input-group-text">Ціна в грн.</span>
                                 </div>
-                                <input name="price" value="{{old('price')}}" max="100" min="1" type="text" id="price" class="form-control" aria-label="Price">
+                                <input name="price" value="{{old('price')}}" max="1000" min="20" type="number" id="price" class="form-control" aria-label="Price">
                             </div>
                         </div>
 

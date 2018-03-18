@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
@@ -15,6 +16,7 @@ class CourseController extends Controller
             ->where('id','!=',$course->id)
             ->take(2)
             ->get();
+
 
         return view('course',['course' => $course, 'relates' => $relates]);
     }

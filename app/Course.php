@@ -9,7 +9,7 @@ use App\Category;
 
 class Course extends Model
 {
-    protected $fillable = ['title','short_description', 'description', 'category_id', 'skills','requirements','price'];
+    protected $fillable = ['title','short_description', 'description', 'category_id', 'skills','requirements','price','bought'];
 
     public function category()
     {
@@ -166,6 +166,54 @@ class Course extends Model
         if ($this->category != null) {
             return $this->category->title;
         }
+    }
+
+
+    public function buy($id)
+    {
+        $bought = json_decode($this->bought);
+        if ($bought == null) {
+            $bought = array();
+        }
+        array_push($bought,$id);
+        $bought = json_encode($bought);
+        $this->bought = $bought;
+        $this->save();
+    }
+
+    public function checkPay($user_id)
+    {
+        if ($this->bought == null)
+        {
+            return;
+        }
+
+        $bought = json_decode($this->bought);
+
+
+         if (in_array($user_id, $bought))
+         {
+             return true;
+         }
+         else
+         {
+             return false;
+         }
+
+    }
+
+    public function countStudents()
+    {
+        $students = json_decode($this->bought);
+        if ($students != null)
+        {
+             return count($students);
+        }
+        else
+        {
+            return 0;
+        }
+
     }
 
 
