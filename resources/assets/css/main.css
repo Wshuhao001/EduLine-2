@@ -573,3 +573,14 @@ footer{
 	display: none;
 }
 
+.study-block{
+	background-color: #fff;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 5px;
+	padding-left: 5px;
+	-webkit-box-shadow: 0px 0px 31px -12px rgba(143,143,143,1);
+	-moz-box-shadow: 0px 0px 31px -12px rgba(143,143,143,1);
+	box-shadow: 0px 0px 31px -12px rgba(143,143,143,1);
+}
+

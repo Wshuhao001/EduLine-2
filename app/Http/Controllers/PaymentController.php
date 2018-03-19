@@ -16,6 +16,10 @@ class PaymentController extends Controller
         $course_id = $request->get('ik_x_course');
         $buyer_id = $request->get('ik_x_login');
 
+        $buyer = User::where('id', $buyer_id)->firstOrFail();
+
+        $buyer->buyCourse($course_id);
+
         $course = Course::where('id', $course_id)->firstOrFail();
 
         $course->buy($buyer_id);
@@ -26,6 +30,7 @@ class PaymentController extends Controller
         $teacher = User::where('id', $teacher_id)->firstOrFail();
         $teacher->money = $teacher->money + $course->price * 0.9;
         $teacher->save();
+
 
     }
 

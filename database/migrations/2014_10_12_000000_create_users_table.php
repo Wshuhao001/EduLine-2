@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->integer('status')->default(0);
             $table->integer('is_admin')->default(0);
             $table->integer('money')->default(0);
+            $table->text('courses')->nullable();
             $table->text('short_description')->nullable();
             $table->text('description')->nullable();
             $table->integer('courses_count')->default(0);

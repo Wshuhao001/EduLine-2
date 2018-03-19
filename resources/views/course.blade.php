@@ -7,7 +7,7 @@
         <section class="jumbotron text-left">
             <style type="text/css">
                 .jumbotron {
-                    background: url(/img/course-bg.jpg);
+                    background: url({{$course->courseBg()}});
                     height: 300px;
                 }
             </style>

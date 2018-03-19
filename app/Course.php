@@ -213,7 +213,24 @@ class Course extends Model
         {
             return 0;
         }
+    }
 
+    public function courseBg()
+    {
+        if($this->category->group == 1)
+        {
+            return '/img/course-bg1.jpg';
+        }
+
+        if($this->category->group == 2)
+        {
+            return '/img/course-bg2.jpg';
+        }
+
+        if($this->category->group == 3)
+        {
+            return '/img/course-bg3.jpg';
+        }
     }
 
 

@@ -53,14 +53,52 @@ class WordsController extends Controller
 
     public function show($course_id)
     {
-
         $course = Course::where('id', $course_id)->firstOrFail();
 
         $words = Words::all()->where('course_id', $course_id);
 
 
-        return view('opened_course.allWords',['words'=>$words, 'course'=>$course]);
+        return view('words.allWords',['words'=>$words, 'course'=>$course]);
     }
+
+    public function randomWord($course_id)
+    {
+        $course = Course::where('id', $course_id)->firstOrFail();
+
+        $word = Words::where('course_id', $course_id)
+            ->inRandomOrder()
+            ->FirstOrFail();
+
+
+        return view('words.studyWord',['word'=>$word, 'course'=>$course]);
+
+
+
+    }
+
+    public function checkWord(Request $request)
+    {
+
+        $checkingWord = Words::where('id', $request->get('word_id'))->firstOrFail();
+
+
+
+
+
+        if($checkingWord->word == $request->get('answer'))
+        {
+            return redirect()->route('course.wordsStudy', $request->get('course_id'));
+        }
+        else
+        {
+            dd('bad');
+        }
+
+
+    }
+
+
+
 
 
 }

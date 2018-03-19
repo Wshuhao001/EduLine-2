@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'status'
+        'name', 'email', 'status', 'courses'
     ];
 
     /**
@@ -130,6 +130,21 @@ class User extends Authenticatable
         }
 
         return;
+    }
+
+
+    public function buyCourse($course_id)
+    {
+        if ($course_id == null) {return; }
+
+        $courses = json_decode($this->courses);
+        if ($courses == null) {
+            $courses = array();
+        }
+        array_push($courses,$course_id);
+        $courses = json_encode($courses);
+        $this->courses = $courses;
+        $this->save();
     }
 
 

@@ -21,9 +21,9 @@ class CreateCoursesTable extends Migration
             $table->string('image')->nullable();
             $table->integer('category_id');
             $table->integer('user_id');
-            $table->string('bought')->nullable();
+            $table->text('bought')->nullable();
             $table->integer('students')->default(0);
-            $table->string('structure')->nullable();
+            $table->text('structure')->nullable();
             $table->string('demo')->nullable();
             $table->text('skills')->nullable();
             $table->text('requirements')->nullable();

@@ -49,7 +49,7 @@
                     <div class="col-md-9">
                         <div class="word-list">
                             <div class="row">
-                                <div class="col-sm-11 word-function text-center">
+                                <div onclick="window.location.href='{{route('course.wordsStudy',$course->id)}}'" class="col-sm-11 word-function text-center">
                                     <i class="fa fa-repeat fa-3x icons" aria-hidden="true"></i>
                                     <p class="text-muted">Вчити</p>
                                 </div>
@@ -65,35 +65,14 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <div class="d-flex justify-content-center text-center">
-                                        <a href="#"><i class="fa fa-volume-up fa-2x icons" aria-hidden="true"></i></a>
+                                        @if($course->category->group == 2)
+                                        <audio class="mt-3" controls src="/{{$word->sound($word->id)}}">Прослухати</audio>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                             @endforeach
 
-
-
-                            <div class="row justify-content-center"> <!-- Пагінація -->
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination">
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div> <!-- Кінець пагінації -->
 
                         </div>
 
@@ -138,6 +117,9 @@
 
             </div>
         </div>
+
+
+
 
 
 

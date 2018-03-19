@@ -62,10 +62,16 @@ class TeacherController extends Controller
 
     public function update(Request $request, $id)
     {
+
+
         $this->validate($request,[
             'lesson_title.*' => 'required|string|size:50',
             'lesson.*' =>  'mimes:mp4,avi'
         ]);
+
+        if($request->lesson == null) {
+            return redirect()->refresh();
+        };
 
         $my_course = static::courseCheck($id);
 

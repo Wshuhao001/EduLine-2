@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use GoogleSpeech\TextToSpeech;
+
 
 class Words extends Model
 {
@@ -26,4 +28,24 @@ class Words extends Model
     {
         $this->delete();
     }
+
+    public function sound($id)
+    {
+        $speech = new TextToSpeech();
+        $speech
+            ->withLanguage('en-us')
+            ->inPath('audios');
+
+
+            $speech->withName('sound_word' . $id);
+            $speech->download($this->word);
+
+            return $speech->getCompletePath();
+
+    }
+
+
+
+
+
 }

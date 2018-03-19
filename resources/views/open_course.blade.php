@@ -56,9 +56,7 @@
                         <source src="/videos/{{$lessons[$lesson_id]}}" type='video/mp4'>
                     </video>
                 </div>
-                <div class="col-md-9">
-                    <div class="video-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor veniam libero laudantium eius fugiat temporibus ipsa aut eveniet, provident nam rerum, incidunt iure quas dolore aperiam officiis, voluptates earum corrupti.</div>
-                </div>
+                <div class="col-md-9"></div>
                 <div class="col-md-3">
                     @if($lesson_id != 0)
                         <h4 class="text-muted">Попередній урок:</h4>
