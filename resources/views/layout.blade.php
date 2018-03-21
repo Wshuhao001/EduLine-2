@@ -20,13 +20,16 @@
 
 <body>
 <header>
-    <nav class="navbar navbar-expand navbar-dark top-navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark top-navbar">
 
         <div class="container">
             <a class="navbar-brand" href="/">EduLine</a>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown d-none d-sm-none d-md-block">
                         <form class="form-inline my-2 my-lg-0 ">
@@ -37,24 +40,16 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Спільнота
                         </a>
-                        <div class="dropdown-menu pl-3" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu pl-3 main-link" aria-labelledby="navbarDropdown">
                             <div class="row">
-                                <div class="col-sm-4">
-                                    <h5 class="font-weight-light"><i class="fa fa-calendar-plus-o fa-black" aria-hidden="true"></i> Курси</h5>
+                                <div class="col-sm-12">
+                                    <h5 class="font-weight-light"><i class="fa fa-calendar-plus-o fa-black" aria-hidden="true"></i>Курси</h5>
                                     <a class="dropdown-item" href="/">Всі курси</a>
                                     <a class="dropdown-item" href="#">Мої курси</a>
-                                    <a class="dropdown-item" href="#">Слова з курсів</a>
                                 </div>
-                                <div class="col-sm-4">
-                                    <h5 class="font-weight-light"><i class="fa fa-th fa-black" aria-hidden="true"></i> Статті</h5>
-                                    <a class="dropdown-item" href="#">Новинки</a>
-                                    <a class="dropdown-item" href="#">Мій список статтей</a>
-                                </div>
-                                <div class="col-sm-4">
-                                    <h5 class="font-weight-light"><i class="fa fa-file-word-o fa-black" aria-hidden="true"></i> Слова</h5>
+                                <div class="col-sm-12">
+                                    <h5 class="font-weight-light"><i class="fa fa-file-word-o fa-black" aria-hidden="true"></i>Слова</h5>
                                     <a class="dropdown-item" href="#">Набори слів</a>
-                                    <a class="dropdown-item" href="#">Мої слова</a>
-                                    <a class="dropdown-item" href="#">Створити набір</a>
                                 </div>
                             </div>
                         </div>
@@ -63,21 +58,21 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Категорії
                         </a>
-                        <div class="dropdown-menu pl-3" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu pl-3 main-link" aria-labelledby="navbarDropdown">
                             <div class="row">
-                                <div class="col-sm-4">
+                                <div class="col-md-4">
                                     <h5 class="font-weight-light"><i class="fa fa-code fa-black" aria-hidden="true"></i> Розробка</h5>
                                     @foreach($dev_categories as $dev_cat)
                                     <a class="dropdown-item" href="{{route('course.category',$dev_cat->id)}}">{{$dev_cat->title}}</a>
                                     @endforeach
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-md-4">
                                     <h5 class="font-weight-light"><i class="fa fa-language fa-black" aria-hidden="true"></i> Вивчення мов</h5>
                                     @foreach($lang_categories as $lang_cat)
                                         <a class="dropdown-item" href="{{route('course.category',$lang_cat->id)}}">{{$lang_cat->title}}</a>
                                     @endforeach
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-md-4">
                                     <h5 class="font-weight-light"><i class="fa fa-briefcase fa-black" aria-hidden="true"></i> Інше</h5>
                                     @foreach($business_categories as $business_cat)
                                         <a class="dropdown-item" href="{{route('course.category',$business_cat->id)}}">{{$business_cat->title}}</a>
@@ -87,15 +82,23 @@
                         </div>
                     </li>
 
-                    <li class="nav-item user-btn">
-                        <div class="dropdown">
+                </ul>
+                
+                    <div class="dropdown">
 
                                 @if(Auth::check())
-                                    @if(Auth::user()->status == 1)
-                                        <a href="{{route('teacher.index')}}"> <button class="btn btn-outline-light" type="button">Курси</button></a>
-                                    @endif
-                                    <a href="#"> <button class="btn btn-outline-light ml-2" type="button">Профіль</button></a>
-                                    <a href="/logout"> <button class="btn btn-outline-light ml-2" type="button">Вийти</button></a>
+                                <a class="nav-link dropdown-toggle navbarDropdown" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  {{Auth::user()->name}}
+                                  <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                @if(Auth::user()->status == 1)
+                                    <a class="dropdown-item" href="{{route('teacher.index')}}">Мої курси</a>
+                                @endif
+                                  <a class="dropdown-item" href="#">Профіль</a>
+                                  <a class="dropdown-item" href="/logout">Вийти</a>
+                                </div>
+                                   
                                 @else
                                     <a href="/login"> <button class="btn btn-outline-light" type="button">Вхід</button></a>
                                     <a href="/register"> <button class="btn btn-outline-light ml-2" type="button">Реєстрація</button></a>
@@ -103,9 +106,8 @@
                                 @endif
 
                         </div>
-                    </li>
-
-                </ul>
+              
+                
 
 
             </div>

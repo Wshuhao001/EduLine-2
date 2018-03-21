@@ -48,6 +48,11 @@
             <div class="row">
                 <div class="col-sm-2"></div>
                 <div align="center" class="col-sm-8 study-block mt-3 pb-3">
+                    @if(session()->has('errorWord'))
+                        <div class="alert alert-danger">
+                            Допущена помилка в слові "{{ session()->get('errorWord') }}"
+                        </div>
+                    @endif
                     {{Form::open(['route'=>'course.checkWord', 'method'=>'post'])}}
                     <h5 align="center" class="mt-2">{{$word->translate}}</h5>
                     <div class="row">

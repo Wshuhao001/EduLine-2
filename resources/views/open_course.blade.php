@@ -16,19 +16,22 @@
 
                 <div class="row">
                     <div class="col-md-4">
-                        <img align="center" class="img-fluid course-avatar" src="{{$course->getImage()}}" alt="">
+                        <img  align="center" class="img-fluid" src="{{$course->getImage()}}" alt="">
                     </div>
                     <div class="col-md-8">
                         <h1 class="jumbotron-heading text-light">{{$course->title}}</h1>
-                        <a href="{{route('course.lessons', [$course->id, 0])}}"><button  align="center" class="btn btn-primary ml-3">Перейти до уроків</button></a>
-                        <a href="{{route('course.words', $course->id)}}"><button  align="center" class="btn btn-primary ml-3">Перейти до вивчення термінів</button></a>
+
                         <p class="lead text-light">{{$course->description}}</p>
+
+                        <a href="{{route('course.lessons', [$course->id, 0])}}"><button  align="center" class="btn btn-primary ml-3 mt-1">Перейти до уроків</button></a>
+                        <a href="{{route('course.words', $course->id)}}"><button  align="center" class="btn btn-primary ml-3 mt-1">Перейти до вивчення термінів</button></a>
+
                         <div class="row">
                             <div class="col-sm-4">
                                 <p class="text-light">Автор: <a class="text-light" href="{{route('teacher_courses.index', $course->author->id)}}">{{$course->author->name}}</a></p>
                             </div>
                             <div class="col-sm-5 text-left">
-                                <p class="text-light">Зареєстрованих студентів: {{$course->students}}</p>
+                                <p class="text-light">Зареєстрованих студентів: {{$course->countStudents()}}</p>
                             </div>
                         </div>
 

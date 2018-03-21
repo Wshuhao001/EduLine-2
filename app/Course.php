@@ -202,6 +202,19 @@ class Course extends Model
 
     }
 
+    public function checkTeacher()
+    {
+        if (Auth::user()->id == null)
+        {
+            return;
+        }
+
+        if ($this->user_id == Auth::user()->id)
+        {
+            return true;
+        }
+    }
+
     public function countStudents()
     {
         $students = json_decode($this->bought);
@@ -232,6 +245,9 @@ class Course extends Model
             return '/img/course-bg3.jpg';
         }
     }
+
+
+
 
 
 

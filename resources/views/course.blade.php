@@ -32,7 +32,40 @@
             <div class="row">
                 <div class="col-md-9">
                     <div class="word-list">
-                        <div class="row no-mobile">
+                        <div class="row">
+                            <div class="col-md-3 course-buy d-block d-md-none mt-2">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <div class="videoContainer">
+                                <img align="center" class="img-fluid" src="{{$course->getImage()}}">
+                                <a href="#" data-toggle="modal" data-target="#exampleModal"><img src="/img/play.png" alt="play" class="playBtn"></a>
+                            </div>
+                            <h4 align="center">{{$course->title}}</h4>
+                            <h3 align="center">{{$course->price}}$</h3>
+
+                            @if(Auth::check())
+                                @if($course->checkPay(Auth::user()->id) || $course->checkTeacher() == true)
+                                    <a href="{{route('course.lessons', [$course->id, 0])}}"><input type="submit" class="btn btn-warning btn-block" value="Перейти до перегляду" ></a>
+                                @else
+                                    <form id="payment" name="payment" method="post" action="https://sci.interkassa.com/" enctype="utf-8">
+                                        <input type="hidden" name="ik_co_id" value="5aa84a6c3b1eaf55298b4570">
+                                        <input type="hidden" name="ik_pm_no" value="{{time()}}">
+                                        <input type="hidden" name="ik_am" value="{{$course->price}}">
+                                        <input type="hidden" name="ik_cur" value="UAH">
+                                        <input type="hidden" name="ik_x_login" value="{{Auth::user()->id}}">
+                                        <input type="hidden" name="ik_x_course" value="{{$course->id}}">
+                                        <input type="hidden" name="ik_desc" value="Продажа курсу">
+                                        <input type="submit" class="btn btn-warning btn-block" value="Купити">
+                                    </form>
+                                @endif
+
+                            @else
+                                <a href="/login"><input type="submit" class="btn btn-warning btn-block" value="Купити"></a>
+                            @endif
+                            <button type="button" class="btn btn-outline-primary btn-block mt-3" data-toggle="modal" data-target="#exampleModal">Спробувати</button>
+                        </div>
+                    </div>
+                </div>
                             @if($course->requirements != null)
                             <div class="col-md-12 new-skills">
                                 <h4 class="text-muted">Чому я научусь ?</h4>
@@ -54,7 +87,7 @@
                                 <p class="text-left">{{$course->description}}</p>
                             </div>
 
-                            <div class="col-md-12 compare d-none d-lg-block">
+                            <div class="col-md-12 compare">
 
 
                                 <div class="row">
@@ -150,18 +183,18 @@
                     </div>
 
                 </div>
-                <div class="col-md-3 course-buy">
+                <div class="col-md-3 course-buy d-none d-md-block">
                     <div class="row">
                         <div class="col-md-12 ">
                             <div class="videoContainer">
-                                <img align="center" class="img-fluid course-avatar" src="{{$course->getImage()}}">
+                                <img align="center" class="img-fluid" src="{{$course->getImage()}}">
                                 <a href="#" data-toggle="modal" data-target="#exampleModal"><img src="/img/play.png" alt="play" class="playBtn"></a>
                             </div>
                             <h4 align="center">{{$course->title}}</h4>
                             <h3 align="center">{{$course->price}}$</h3>
 
                             @if(Auth::check())
-                                @if($course->checkPay(Auth::user()->id) == true)
+                                @if($course->checkPay(Auth::user()->id) || $course->checkTeacher() == true)
                                     <a href="{{route('course.lessons', [$course->id, 0])}}"><input type="submit" class="btn btn-warning btn-block" value="Перейти до перегляду" ></a>
                                 @else
                                     <form id="payment" name="payment" method="post" action="https://sci.interkassa.com/" enctype="utf-8">
@@ -179,10 +212,6 @@
                             @else
                                 <a href="/login"><input type="submit" class="btn btn-warning btn-block" value="Купити"></a>
                             @endif
-
-
-
-
                             <button type="button" class="btn btn-outline-primary btn-block mt-3" data-toggle="modal" data-target="#exampleModal">Спробувати</button>
                         </div>
                     </div>

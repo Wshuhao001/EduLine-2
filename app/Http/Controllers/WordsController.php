@@ -53,6 +53,7 @@ class WordsController extends Controller
 
     public function show($course_id)
     {
+
         $course = Course::where('id', $course_id)->firstOrFail();
 
         $words = Words::all()->where('course_id', $course_id);
@@ -91,7 +92,8 @@ class WordsController extends Controller
         }
         else
         {
-            dd('bad');
+            return redirect()->route('course.wordsStudy', $request->get('course_id'))
+                ->with('errorWord', $checkingWord->translate);
         }
 
 

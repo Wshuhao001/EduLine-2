@@ -20,21 +20,20 @@
     Route::get('/teacher/{id}/courses', 'AllCoursesController@teacherShow')->name('teacher_courses.index');
 
 
-    Route::get('course/{course_id}/words', 'WordsController@show')->name('course.words');
-    Route::get('course/word/sound', 'WordsController@sound')->name('word.sound');
-    Route::get('course/{course_id}/words/study', 'WordsController@randomWord')->name('course.wordsStudy');
-    Route::post('course/words/study', 'WordsController@checkWord')->name('course.checkWord');
-
-    Route::get('/course/{id}/{lesson_id}', 'MyCourseController@index')->name('course.lessons');
-
     Route::get('/good_payment', 'PaymentController@good');
-
     Route::get('/bad_payment', 'PaymentController@bad');
-
     Route::get('/waiting_payment', 'PaymentController@waiting');
-
     Route::get('/payment', 'PaymentController@store');
 
+
+
+    Route::group(['middleware' => 'buyer'], function (){
+        Route::post('course/words/study', 'WordsController@checkWord')->name('course.checkWord');
+        Route::get('course/{course_id}/words/study', 'WordsController@randomWord')->name('course.wordsStudy');
+        Route::get('course/{course_id}/words', 'WordsController@show')->name('course.words');
+        Route::get('course/word/sound', 'WordsController@sound')->name('word.sound');
+        Route::get('/course/{id}/{lesson_id}', 'MyCourseController@index')->name('course.lessons');
+    });
 
 
 

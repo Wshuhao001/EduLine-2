@@ -25,6 +25,7 @@ class PaymentController extends Controller
         $course->buy($buyer_id);
         $course->save();
 
+
         $teacher_id = $course->user_id;
 
         $teacher = User::where('id', $teacher_id)->firstOrFail();
