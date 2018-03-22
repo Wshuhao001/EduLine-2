@@ -18,11 +18,13 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('password')->default('test');
+            $table->string('firstName')->default('');
+            $table->string('surname')->default('');
             $table->integer('status')->default(0);
             $table->integer('is_admin')->default(0);
             $table->integer('money')->default(0);
             $table->text('courses')->nullable();
-            $table->text('short_description')->nullable();
+            $table->text('image')->nullable();
             $table->text('description')->nullable();
             $table->integer('courses_count')->default(0);
             $table->integer('students')->default(0);

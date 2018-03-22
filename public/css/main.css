@@ -2775,6 +2775,20 @@ footer{
     margin-left: -48px; /*half of the width */
     margin-top: -48px; /*half of the height */
 }
+
+.editBtn{
+	display: none;
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	top: 50px;
+	left: 49%;
+}
+
+.videoContainer:hover .editBtn{
+	display: block;
+}
+
 .videoContainer:hover .playBtn {
     display: block;
 }

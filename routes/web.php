@@ -40,6 +40,9 @@
 
 
     Route::group(['middleware' => 'teacher'],function (){
+        Route::get('/teacher/profile', 'TeacherProfileController@index')->name('profile.index');
+        Route::post('/teacher/profile', 'TeacherProfileController@update')->name('profile.update');
+        Route::post('/teacher/profile/avatar', 'TeacherProfileController@uploadAvatar')->name('profile.avatar');
         Route::get('/teacher/courses/manage', 'TeacherController@index')->name('teacher.index');
         Route::get('/teacher/course/create', 'TeacherController@create')->name('teacher.create');
         Route::post('/teacher/course/create', 'TeacherController@store')->name('teacher.store');

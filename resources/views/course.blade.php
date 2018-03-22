@@ -161,7 +161,7 @@
                             </div>
                             @if(!$course->comments->isEmpty())
                             @foreach($course->comments as $comment)
-                            <div class="course-reviews mb-3">
+                            <div class="course-reviews mt-2">
 
                                 <div class="row">
                                     <div class="col-md-2">
@@ -191,7 +191,7 @@
                                 <a href="#" data-toggle="modal" data-target="#exampleModal"><img src="/img/play.png" alt="play" class="playBtn"></a>
                             </div>
                             <h4 align="center">{{$course->title}}</h4>
-                            <h3 align="center">{{$course->price}}$</h3>
+                            <h3 align="center">{{$course->price}}грн</h3>
 
                             @if(Auth::check())
                                 @if($course->checkPay(Auth::user()->id) || $course->checkTeacher() == true)
@@ -245,6 +245,5 @@
             </div>
         </div>
     </div>
-
 
 @endsection
