@@ -9,6 +9,7 @@
                 .jumbotron {
                     background: url(/img/pattern.png);
                     height: 200px;
+                    border-radius:0;
                 }
             </style>
 

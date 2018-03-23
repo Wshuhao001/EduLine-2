@@ -9,6 +9,7 @@
                 .jumbotron {
                     background: url({{$course->courseBg()}});
                     height: 300px;
+                    border-radius:0;
                 }
             </style>
 

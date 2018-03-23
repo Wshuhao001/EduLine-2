@@ -73,9 +73,9 @@ class User extends Authenticatable
         if ($image == null) {return; }
 
 
-        Storage::delete('/uploads/' . $this->image);
+        //Storage::delete('uploads/' . $this->image);
         $filename = str_random(10) . '.' . $image->extension();
-        $image->saveAs('/uploads',$filename);
+        $image->storeAs('uploads',$filename);
         $this->image = $filename;
         $this->save();
     }

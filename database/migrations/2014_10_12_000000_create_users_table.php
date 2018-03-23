@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('password')->default('test');
-            $table->string('firstName')->default('');
-            $table->string('surname')->default('');
+            $table->string('firstName')->default('')->nullabe();
+            $table->string('surname')->default('')->nullabe();
             $table->integer('status')->default(0);
             $table->integer('is_admin')->default(0);
             $table->integer('money')->default(0);

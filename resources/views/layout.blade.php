@@ -95,7 +95,7 @@
                                 @if(Auth::user()->status == 1)
                                     <a class="dropdown-item" href="{{route('teacher.index')}}">Мої курси</a>
                                 @endif
-                                  <a class="dropdown-item" href="#">Профіль</a>
+                                  <a class="dropdown-item" href="{{route('profile.index')}}">Профіль</a>
                                   <a class="dropdown-item" href="/logout">Вийти</a>
                                 </div>
                                    

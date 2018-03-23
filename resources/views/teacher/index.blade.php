@@ -17,18 +17,19 @@
                 <div class="col-md-12">
                     <div class="text-center">
                         <div class="videoContainer text-center">
-                            <img align="center" class="img-fluid rounded-circle img-thumbnail" src="https://picsum.photos/100/100" alt="">
-                            <a href="#" data-toggle="modal" data-target="#exampleModal"><img src="/img/edit.png" class="editBtn"></a>
+                            <img align="center" height="100" width="100" class="img-fluid rounded-circle img-thumbnail" src="{{$user->getImage()}}">
                         </div>
+                        <a href="#" data-toggle="modal" data-target="#exampleModal">Редагувати аватар  <i class="fa fa-pencil-square-o fa-black" aria-hidden="true"></i></a>
 
                     </div>
+                    @include('errors')
                     @if(session()->has('status'))
                         <div class="alert alert-success">
                             {{ session()->get('status') }}
                         </div>
                     @endif
                     {{Form::open(['route'=>'profile.update', 'method'=>'post'])}}
-                    <div class="row mt-2">
+                    <div class="row mt-3">
                         <div class="col-md-6">
                             <label for="your_course_title">Ім'я</label>
                             <div class="input-group mb-3">
@@ -44,6 +45,7 @@
                     </div>
 
 
+
                     <div class="input-group mb-3">
                         <label for="description">Про вас:</label>
                         <div class="input-group mb-3">
@@ -55,6 +57,9 @@
 
 
                     <button type="submit" class="btn btn-primary btn-block mt-3">Внести зміни</button>
+
+                    {{Form::close()}}
+
                 </div>
                 <div class="col-md-3"></div>
             </div>
@@ -64,20 +69,24 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Змінити аватар</h5>
+
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
+                            <p><strong>Вимоги:</strong> зображення повинно бути 100px/100px</p>
+                            {{Form::open(['route'=>'profile.avatar', 'files' => true, 'method'=>'post'])}}
                             <div class="input-group mb-3">
 
                                 <div class="custom-file">
 
 
-                                    <input name="image" value="{{old('image')}}" type="file" class="custom-file-input" id="input_course_avatar">
+                                    <input name="image" type="file" class="custom-file-input" id="input_course_avatar">
                                     <label class="custom-file-label" for="input_course_avatar">Виберіть аватар</label>
                                 </div>
                             </div>
+                            <button type="submit" class="btn btn-primary mt-2">Змінити аватар</button>
                             {{Form::close()}}
 
                         </div>

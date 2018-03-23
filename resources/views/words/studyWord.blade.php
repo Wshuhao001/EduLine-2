@@ -8,6 +8,7 @@
         <style type="text/css">
             .jumbotron {
                 background-color: #2A303B;
+                border-radius:0;
             }
         </style>
 

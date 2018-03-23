@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class TeacherProfileController extends Controller
 {
@@ -25,14 +26,14 @@ class TeacherProfileController extends Controller
      */
     public function update(Request $request)
     {
+
+        $this->validate($request,[
+            'firstName' => 'string|max:20|min:3',
+            'surname' => 'string|max:20|min:3',
+            'description' => 'max:150|min:10'
+        ]);
+
         $user = User::where('id', $request->get('user_id'))->firstOrFail();
-
-        if ($request->get('image') != null)
-        {
-            $image = $user->uploadAvatar($request->get('image'));
-            $user->image = $image;
-        }
-
 
         $user->firstName = $request->get('firstName');
         $user->surname = $request->get('surname');
@@ -44,6 +45,22 @@ class TeacherProfileController extends Controller
             ->with('status', 'Ваші данні успішно обновлені');
 
 
+    }
+
+
+    public function uploadAvatar(Request $request)
+    {
+        $this->validate($request,[
+            'image' => 'required|image|dimensions:ratio=1/1|dimensions:width=100,height=100'
+
+        ]);
+
+        $user = Auth::user();
+        $image = $request->image;
+
+        $user->uploadAvatar($image);
+
+        return redirect()->route('profile.index');
     }
 
 }
