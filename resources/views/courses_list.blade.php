@@ -21,7 +21,7 @@
 
         <div class="album py-5 ">
             <div class="container">
-                <p class="font-weight-normal big-head-text text-center">Список курсів</p>
+                <p class="font-weight-normal big-head-text text-center">Всі курси</p>
 
                 <div class="row main-words-block">
                     <div class="col-md-1"></div>

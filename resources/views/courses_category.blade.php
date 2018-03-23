@@ -21,12 +21,10 @@
 
         <div class="album py-5 ">
             <div class="container">
-                <p class="font-weight-normal big-head-text text-center">Список курсів</p>
+                <p class="font-weight-normal big-head-text text-center">{{$category->title}}</p>
 
                 <div class="row main-words-block">
                     <div class="col-md-1"></div>
-
-
 
                     @for($i = 1; $i < count($categories); $i++)
                         <div onclick="window.location.href='{{route('course.category',$i)}}'" class="col-md-2 font-weight-bold main-words-categ">
@@ -58,14 +56,8 @@
                                                 <p class="card-text"><small>By </small> <small class="text-muted link">{{$course->author->name}}</small></p>
                                             </div>
 
-                                            <div class="col-sm-6 text-right">
-                                                <i class="fa fa-comment-o fa-black"></i>
-                                                <a class="text-muted">1</a>
 
-                                            </div>
                                         </div>
-
-
 
                                     </div>
 

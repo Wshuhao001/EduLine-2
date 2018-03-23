@@ -45,11 +45,11 @@
                                 <div class="col-sm-12">
                                     <h5 class="font-weight-light"><i class="fa fa-calendar-plus-o fa-black" aria-hidden="true"></i>Курси</h5>
                                     <a class="dropdown-item" href="/">Всі курси</a>
-                                    <a class="dropdown-item" href="#">Мої курси</a>
+                                    <a class="dropdown-item" href="{{route('courses.own')}}">Мої курси</a>
                                 </div>
                                 <div class="col-sm-12">
                                     <h5 class="font-weight-light"><i class="fa fa-file-word-o fa-black" aria-hidden="true"></i>Слова</h5>
-                                    <a class="dropdown-item" href="#">Набори слів</a>
+                                    <a class="dropdown-item" href="{{route('courses.own')}}">Набори слів</a>
                                 </div>
                             </div>
                         </div>

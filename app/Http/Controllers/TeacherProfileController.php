@@ -30,7 +30,7 @@ class TeacherProfileController extends Controller
         $this->validate($request,[
             'firstName' => 'string|max:20|min:3',
             'surname' => 'string|max:20|min:3',
-            'description' => 'max:150|min:10'
+            'description' => 'max:400|min:10'
         ]);
 
         $user = User::where('id', $request->get('user_id'))->firstOrFail();

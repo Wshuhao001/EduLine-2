@@ -11,6 +11,7 @@ class CourseController extends Controller
     public function index($id)
     {
         $course = Course::where('id',$id)->where('status',1)->firstOrFail();
+        $teacher = $course->author;
 
         $relates = Course::where('category_id', $course->category_id)
             ->where('id','!=',$course->id)
@@ -18,6 +19,6 @@ class CourseController extends Controller
             ->get();
 
 
-        return view('course',['course' => $course, 'relates' => $relates]);
+        return view('course',['course' => $course, 'relates' => $relates, 'teacher' => $teacher]);
     }
 }

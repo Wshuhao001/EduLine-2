@@ -56,6 +56,8 @@
     Route::group(['middleware' => 'auth'],function (){
         Route::get('/logout', 'AuthController@logout');
         Route::post('/comment', 'CommentsController@store');
+        Route::get('/my_courses', 'OwnCoursesController@index')->name('courses.own');
+
 
     });
 

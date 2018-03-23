@@ -2,27 +2,27 @@
 
 @section('content')
 
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Курси вчителя</h1>
+        </div>
+    </section>
+
 <div class="container">
     <div class="col-md-12 about-teacher">
         <div align="center" class="teacher-info justify-content-center">
             <p align="center" class="text-muted small-head-text">Про викладача</p>
             <a>{{$teacher->name}}</a>
             <p><small class="text-muted">Вчитель на EduLine</small></p>
-            <img width="100" height="100" class="rounded-circle teacher-avatar" src="/img/teacher.jpg">
+            <img width="100" height="100" class="rounded-circle teacher-avatar" src="{{$teacher->getImage()}}">
         </div>
 
         <div class="row">
-            <div class="col-md-4 text-center">
-
-                <ul>
-                    <li><i class="fa fa-youtube-play fa-black" aria-hidden="true"></i> {{$teacher->courses_count}} курсів</li>
-                    <li><i class="fa fa-user fa-black" aria-hidden="true"></i> {{$teacher->students}} студентів</li>
-                </ul>
-            </div>
-            <div class="col-md-8">
-                <p>{{$teacher->short_description}}</p>
+            <div class="col-md-2"></div>
+            <div class="col-md-8 mt-2">
                 <p>{{$teacher->description}}</p>
             </div>
+            <div class="col-md-2"></div>
         </div>
     </div>
 
@@ -66,6 +66,9 @@
         <h4 align="center" class="mt-3">В цього вчителя ще немає курсів...</h4>
     @endif
 </div>
+
+
+    @include('footer')
 
 
 

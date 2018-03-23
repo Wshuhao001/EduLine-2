@@ -88,7 +88,7 @@
                                 <p class="text-left">{{$course->description}}</p>
                             </div>
 
-                            <div class="col-md-12 compare">
+                            <div class="col-md-12 compare d-none d-md-block">
 
 
                                 <div class="row">
@@ -106,12 +106,12 @@
                                             </div>
                                             <div class="col-md-1">
                                                 <div class="users-count">
-                                                    <i class="fa fa-users text-muted" aria-hidden="true"></i> {{$relate->students}}
+                                                    <i class="fa fa-users text-muted" aria-hidden="true"></i> {{$relate->countStudents()}}
                                                 </div>
 
                                             </div>
                                             <div class="col-md-3 text-center related-course-info">
-                                                <h5>{{$relate->price}}$</h5>
+                                                <h5 class="font-weight-light">{{$relate->price}} грн.</h5>
                                             </div>
                                         </div>
                                         @endforeach
@@ -126,28 +126,25 @@
 
                             
                             <div class="col-md-12 about-teacher">
-                                <div align="center" class="teacher-info justify-content-center">
+                                <div  class="teacher-info justify-content-center text-center">
                                     <p align="center" class="text-muted small-head-text">Про викладача</p>
                                     <a href="{{route('teacher_courses.index', $course->author->id)}}">{{$course->author->name}}</a>
                                     <p><small class="text-muted">Вчитель на EduLine</small></p>
-                                    <img width="100" height="100" class="rounded-circle teacher-avatar" src="/img/teacher.jpg">
+                                    <img width="100" height="100" class="rounded-circle" src="{{$teacher->getImage()}}">
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="text-center">
+
+                                            <li><i class="fa fa-user fa-black" aria-hidden="true"></i> {{$course->countStudents()}} студентів</li>
+
+                                    </div>
+                                    <p>{{$course->author->short_description}}</p>
+                                    <p>{{$course->author->description}}</p>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-4 text-center">
-
-                                        <ul>
-                                            <li><a href="{{route('teacher_courses.index', $course->author->id)}}"><i class="fa fa-youtube-play fa-black" aria-hidden="true"></i> 5 курсів</a> </li>
-                                            <li><i class="fa fa-user fa-black" aria-hidden="true"></i> {{$course->students}} студентів</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <p>{{$course->author->short_description}}</p>
-                                        <p>{{$course->author->description}}</p>
-                                    </div>
-                                </div>
                             </div>
                             <h3 align="center" class="text-muted reviews-title">Відгуки студентів</h3>
+                            @if(Auth::check())
                             <div class="course-reviews">
                                 <div class="row">
                                     <div class="col-md-11 mt-3 ml-3">
@@ -160,9 +157,11 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
+
                             @if(!$course->comments->isEmpty())
                             @foreach($course->comments as $comment)
-                            <div class="course-reviews mt-2">
+                            <div class="course-reviews mt-2 mb-2">
 
                                 <div class="row">
                                     <div class="col-md-2">
@@ -179,6 +178,10 @@
                                 </div>
                             </div>
                             @endforeach
+                            @else
+                                <div class="course-reviews mt-2 pt-3 pb-3 mb-4 text-center">
+                                    <strong class="text-muted">Ще немає коментарів...</strong>
+                                </div>
                             @endif
                         </div>
                     </div>
@@ -191,8 +194,8 @@
                                 <img align="center" class="img-fluid" src="{{$course->getImage()}}">
                                 <a href="#" data-toggle="modal" data-target="#exampleModal"><img src="/img/play.png" alt="play" class="playBtn"></a>
                             </div>
-                            <h4 align="center">{{$course->title}}</h4>
-                            <h3 align="center">{{$course->price}}грн</h3>
+                            <h4 align="center" class="font-weight-light">{{$course->title}}</h4>
+                            <h3 align="center" class="font-weight-light">{{$course->price}} грн.</h3>
 
                             @if(Auth::check())
                                 @if($course->checkPay(Auth::user()->id) || $course->checkTeacher() == true)
@@ -233,15 +236,15 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <video controls class="embed-responsive-item"  poster="{{$course->getImage()}}" controls>
+
+                        <video class="video-js w-100" controls
+                               poster="{{$course->getImage()}}" data-setup="{}">
                             <source src="{{$course->getDemo()}}" type="video/mp4">
                         </video>
-                    </div>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
                 </div>
             </div>
         </div>

@@ -26,7 +26,6 @@ class CreateUsersTable extends Migration
             $table->text('courses')->nullable();
             $table->text('image')->nullable();
             $table->text('description')->nullable();
-            $table->integer('courses_count')->default(0);
             $table->integer('students')->default(0);
             $table->rememberToken();
             $table->timestamps();

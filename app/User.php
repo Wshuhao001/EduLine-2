@@ -84,7 +84,7 @@ class User extends Authenticatable
     {
         if ($this->image == null)
         {
-            return '/img/no-user-image.png';
+            return '/img/student.jpg';
         }
 
         return '/uploads/' . $this->image;
@@ -110,6 +110,7 @@ class User extends Authenticatable
 
         return $this->makeAdmin();
     }
+
 
     public function makeTeacher()
     {
