@@ -22,6 +22,8 @@ class WordsController extends Controller
         $course = Course::all()->firstWhere('id', $course_id);
 
 
+
+
         return view('words.words_add',['words'=>$words, 'course'=> $course]);
     }
 
@@ -56,10 +58,18 @@ class WordsController extends Controller
 
         $course = Course::where('id', $course_id)->firstOrFail();
 
+        if (count(Course::all()) >= 5){
+            $relates = Course::all()->random(5);
+        }
+        else{
+            $relates = null;
+        }
+
+
         $words = Words::all()->where('course_id', $course_id);
 
 
-        return view('words.allWords',['words'=>$words, 'course'=>$course]);
+        return view('words.allWords',['words'=>$words, 'course'=>$course, 'relates' => $relates]);
     }
 
     public function randomWord($course_id)

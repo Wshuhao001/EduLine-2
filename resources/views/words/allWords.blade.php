@@ -82,41 +82,19 @@
 
 
                     </div>
+                    @if($relates != null)
                     <div class="col-md-3 d-none d-md-block d-lg-block">
-                        <div class="side-block">
-                            <h5 class="text-center">Популярні набори</h5>
-                            <hr>
-                            <ul>
-                                <li><a class="font-weight-light text-muted " href="#">Привіт як справи ?</a></li>
-                                <li><a class="font-weight-light text-muted" href="#">test</a></li>
-                                <li><a class="font-weight-light text-muted" href="#">test</a></li>
-                                <li><a class="font-weight-light text-muted" href="#">test</a></li>
-                                <li><a class="font-weight-light text-muted" href="#">test</a></li>
-                            </ul>
-                        </div>
                         <div class="side-block">
                             <h5 class="text-center">Популярні курси</h5>
                             <hr>
                             <ul>
-                                <li><a class="font-weight-light text-muted" href="#">test</a></li>
-                                <li><a class="font-weight-light text-muted" href="#">test</a></li>
-                                <li><a class="font-weight-light text-muted" href="#">test</a></li>
-                                <li><a class="font-weight-light text-muted" href="#">test</a></li>
-                                <li><a class="font-weight-light text-muted" href="#">test</a></li>
-                            </ul>
-                        </div>
-                        <div class="side-block">
-                            <h5 class="text-center">Нові статті</h5>
-                            <hr>
-                            <ul>
-                                <li><a class="font-weight-light text-muted" href="#">test</a></li>
-                                <li><a class="font-weight-light text-muted" href="#">test</a></li>
-                                <li><a class="font-weight-light text-muted" href="#">test</a></li>
-                                <li><a class="font-weight-light text-muted" href="#">test</a></li>
-                                <li><a class="font-weight-light text-muted" href="#">test</a></li>
+                                @foreach($relates as $relate)
+                                <li><a class="font-weight-light text-muted" href="{{route('course.index', $relate->id)}}">{{$relate->title}}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
+                    @endif
                 </div>
 
             </div>

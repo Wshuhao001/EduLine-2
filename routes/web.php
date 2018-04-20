@@ -18,6 +18,7 @@
     Route::get('/course/{id}', 'CourseController@index')->name('course.index');
     Route::get('/course/category/{category_id}', 'AllCoursesController@categoryFilter')->name('course.category');
     Route::get('/teacher/{id}/courses', 'AllCoursesController@teacherShow')->name('teacher_courses.index');
+    Route::get('/courses/search', 'CourseSearchController@show')->name('courses.search');
 
 
     Route::get('/good_payment', 'PaymentController@good');
@@ -34,8 +35,6 @@
         Route::get('course/word/sound', 'WordsController@sound')->name('word.sound');
         Route::get('/course/{id}/{lesson_id}', 'MyCourseController@index')->name('course.lessons');
     });
-
-
 
 
 

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'previous' => '&laquo; Previous',
-    'next' => 'Next &raquo;',
+    'previous' => ' <div class="btn btn-primary mr-2"> &laquo; Назад &raquo;</div>',
+    'next' => ' <div class="btn btn-primary">Вперед &raquo;</div>',
 
 ];

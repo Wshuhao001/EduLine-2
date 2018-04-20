@@ -29,9 +29,9 @@ class PaymentController extends Controller
         $teacher_id = $course->user_id;
 
         $teacher = User::where('id', $teacher_id)->firstOrFail();
-        $teacher->money = $teacher->money + $course->price * 0.9;
+        $additionalMoney = $course->price * 0.9;
+        $teacher->money = $teacher->money + $additionalMoney;
         $teacher->save();
-
 
     }
 

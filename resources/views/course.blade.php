@@ -231,23 +231,34 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Презентація курсу</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" onclick="stopVideo()" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-
+                    <div class="modal-body1">
                         <video class="video-js w-100" controls
                                poster="{{$course->getImage()}}" data-setup="{}">
-                            <source src="{{$course->getDemo()}}" type="video/mp4">
+                            <source id="video-source" src="{{$course->getDemo()}}" type="video/mp4">
                         </video>
+                    </div>
+
+
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
+                    <button type="button" onclick="stopVideo()" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <script type="text/javascript">
+        function stopVideo(){
+            $(".video-js")[0].player.pause();
+        }
+
+    </script>
 
 @endsection

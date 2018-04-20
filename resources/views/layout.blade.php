@@ -32,13 +32,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown d-none d-sm-none d-md-block">
-                        <form class="form-inline my-2 my-lg-0 ">
-                            <input class="form-control mr-sm-2 main-search" type="search" placeholder="" aria-label="Search">
-                        </form>
+                        {{Form::open(['route'=>'courses.search', 'method'=>'get'])}}
+                            <input class="form-control mr-sm-2 main-search" type="search" name="search">
+                        {{Form::close()}}
                     </li>
                     <li class="nav-item dropdown d-block">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Спільнота
+                            Курси
                         </a>
                         <div class="dropdown-menu pl-3 main-link" aria-labelledby="navbarDropdown">
                             <div class="row">
@@ -88,14 +88,18 @@
 
                                 @if(Auth::check())
                                 <a class="nav-link dropdown-toggle navbarDropdown" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  {{Auth::user()->name}}
+                                    {{Auth::user()->name}}
                                   <i class="fa fa-caret-down" aria-hidden="true"></i>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 @if(Auth::user()->status == 1)
+
+                                        <h6 class="dropdown-header">Баланс: {{Auth::user()->money}} грн. </h6>
+
                                     <a class="dropdown-item" href="{{route('teacher.index')}}">Мої курси</a>
-                                @endif
+
                                   <a class="dropdown-item" href="{{route('profile.index')}}">Профіль</a>
+                                @endif
                                   <a class="dropdown-item" href="/logout">Вийти</a>
                                 </div>
                                    

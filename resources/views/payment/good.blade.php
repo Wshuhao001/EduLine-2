@@ -6,7 +6,7 @@
         <div class="alert alert-success" role="alert">
             <strong>Ура!</strong> Оплата успішно виконана !
             <br>
-            <a href="{{redirect()->back()}}">Повернутись назад <i class="fa fa-backward fa-black" aria-hidden="true"></i></a>
+            <a href="/">На головну<i class="fa fa-backward fa-black" aria-hidden="true"></i></a>
         </div>
     </div>
 

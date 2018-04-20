@@ -65,8 +65,10 @@
                             </div>
                         </div>
                     @endforeach
-
                 </div>
+                <ul class="pagination">
+                    {{$courses->links()}}
+                </ul>
             </div>
         </div>
         </div>

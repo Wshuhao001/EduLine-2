@@ -2538,7 +2538,6 @@ footer{
 	margin-top: 100px;
 }
 .side-block{
-	height: 200px;
 	width: 100%;
 	background-color: white;
 	margin-top: 25px;
@@ -2561,6 +2560,7 @@ footer{
 
 .dictionary-list:hover{
 	background-color: #E5ECF6;
+	cursor: pointer;
 }
 
 .dictionary-title{

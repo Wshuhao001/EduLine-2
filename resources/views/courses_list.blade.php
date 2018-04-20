@@ -21,7 +21,7 @@
 
         <div class="album py-5 ">
             <div class="container">
-                <p class="font-weight-normal big-head-text text-center">Всі курси</p>
+                <p class="font-weight-normal big-head-text text-center">Популярні курси</p>
 
                 <div class="row main-words-block">
                     <div class="col-md-1"></div>
@@ -79,9 +79,23 @@
                     @endforeach
 
                 </div>
+
+                    <ul class="pagination">
+                        {{$courses->links()}}
+
+                    </ul>
+
+
+
+
+
             </div>
+
         </div>
         </div>
+
+
+
 
     </main>
 

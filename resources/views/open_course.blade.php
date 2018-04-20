@@ -36,10 +36,6 @@
                             </div>
                         </div>
 
-                        <div class="progress">
-                            <div class="progress-bar progress1" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                            <div class="progress-bar progress2" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
                     </div>
 
                 </div>

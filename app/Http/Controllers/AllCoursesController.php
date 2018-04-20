@@ -12,7 +12,7 @@ class AllCoursesController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $courses = Course::all()->where('status', 1);
+        $courses = Course::where('status', 1)->simplePaginate(9);
 
 
         return view('courses_list',['categories'=>$categories, 'courses'=>$courses]);
@@ -33,9 +33,10 @@ class AllCoursesController extends Controller
         $categories = Category::all();
         $category = Category::where('id', $category_id)->firstOrFail();
 
-        $courses = Course::all()
-            ->where('status', 1)
-            ->where('category_id', $category_id);
+        $courses = Course::where([
+            ['status', 1],
+            ['category_id', $category_id]
+        ])->simplePaginate(9);
 
         return view('courses_category',['courses' => $courses, 'category' => $category, 'categories' => $category]);
     }
